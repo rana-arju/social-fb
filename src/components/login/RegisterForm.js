@@ -4,7 +4,15 @@ import RegisterInput from "../inputs/registerInput/RegisterInput";
 import * as Yup from "yup";
 import DateOfBirthSelect from "./DateOfBirthSelect";
 import GenderSelect from "./GenderSelect";
-const RegisterForm = () => {
+import BeatLoader from "react-spinners/BeatLoader";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+const RegisterForm = ({ setVisible }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const userInfo = {
     first_name: "",
     last_name: "",
@@ -64,11 +72,35 @@ const RegisterForm = () => {
   });
   const [dateError, setDateError] = useState("");
   const [genderError, setGenderError] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+  const registerSubmit = async () => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
+        user
+      );
+      setSuccess(data.message);
+      setError("");
+      const { message, ...rest } = data;
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: rest });
+        Cookies.set("user", JSON.stringify(rest));
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      console.log("data", error);
+      setLoading(false);
+      setSuccess("");
+      setError(error.response.data.message);
+    }
+  };
   return (
     <div className="blur">
       <div className="register">
         <div className="register_header">
-          <i className="exit_icon"></i>
+          <i className="exit_icon" onClick={() => setVisible(false)}></i>
           <span>Sign Up</span>
           <span>it's quick and easy</span>
         </div>
@@ -106,7 +138,7 @@ const RegisterForm = () => {
             } else {
               setDateError("");
               setGenderError("");
-              //  registerSubmit();
+              registerSubmit();
             }
           }}
         >
@@ -137,7 +169,7 @@ const RegisterForm = () => {
               </div>
               <div className="reg_line">
                 <RegisterInput
-                  type="text"
+                  type="password"
                   placeholder="New password"
                   name="password"
                   onChange={handleRegisterChange}
@@ -177,6 +209,16 @@ const RegisterForm = () => {
               <div className="reg_btn_wrapper">
                 <button className="blue_btn open_signup">Sign Up</button>
               </div>
+              <BeatLoader
+                color="#1876f2"
+                loading={loading}
+                // cssOverride={override}
+                size={15}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+              {error && <div className="error_text">{error}</div>}
+              {success && <div className="success_text">{success}</div>}
             </Form>
           )}
         </Formik>

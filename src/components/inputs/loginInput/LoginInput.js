@@ -20,6 +20,7 @@ const LoginInput = ({ placeholder, bottom, ...props }) => {
               ? "input_error input_error_desktop"
               : "input_error"
           }
+          style={{ transform: "translateY(3px)" }}
         >
           {meta.touched && meta.error && <ErrorMessage name={field.name} />}
           {meta.touched && meta.error && (
@@ -62,7 +63,7 @@ const LoginInput = ({ placeholder, bottom, ...props }) => {
       {meta.touched && meta.error && (
         <i
           className="error_icon"
-          style={{ top: `${!bottom && !isDesktopOrLaptop ? "60%": "15px"}` }}
+          style={{ top: `${!bottom && !isDesktopOrLaptop ? "60%" : "15px"}` }}
         ></i>
       )}
     </div>
