@@ -30,7 +30,7 @@ const Header = () => {
     setShowAllMenu(false);
   });
   useClickOutside(usermenu, () => {
-    setShowAllMenu(false);
+    setShowUserMenu(false);
   });
   return (
     <header>
@@ -73,13 +73,21 @@ const Header = () => {
         </Link>
       </div>
       <div className="header_right">
-        <div className="circle_icon hover1" ref={Allmenu}>
-          <div onClick={() => setShowAllMenu(!showAllMenu)}>
+        <div
+          className={`circle_icon hover1 ${showAllMenu && "active_header"}`}
+          ref={Allmenu}
+        >
+          <div
+            onClick={() => {
+              setShowAllMenu(!showAllMenu);
+            }}
+          >
             <div style={{ transform: "translateY(2px)" }}>
               <Menu />
             </div>
           </div>
-          {showAllMenu && <AllMenu setShowAllMenu={setShowAllMenu} />}
+
+          {showAllMenu && <AllMenu />}
         </div>
         <div className="circle_icon">
           <Messenger />
@@ -88,9 +96,10 @@ const Header = () => {
           <Notifications />
           <div className="right_notification">12</div>
         </div>
+        
         <div className="profile_link hover1" ref={usermenu}>
           <div onClick={() => setShowUserMenu((prev) => !prev)}>
-            <div style={{ transform: "translateY(2px)" }}>
+            <div>
               <img src={user?.picture} alt="" />
             </div>
           </div>

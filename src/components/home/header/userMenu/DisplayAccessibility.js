@@ -10,7 +10,7 @@ const DisplayAccessibility = ({ setVisible }) => {
         Display & accessibility
       </div>
       <div className="mmenu_main">
-        <div className="small_circle" style={{width: "50px"}}>
+        <div className="small_circle" style={{ width: "50px" }}>
           <i className="dark_filled_icon"></i>
         </div>
         <div className="mmenu_col">
@@ -30,7 +30,7 @@ const DisplayAccessibility = ({ setVisible }) => {
         <input type="radio" name="dark" id="darkon" />
       </label>{" "}
       <div className="mmenu_main">
-        <div className="small_circle" style={{width: "50px"}}>
+        <div className="small_circle" style={{ width: "50px" }}>
           <i className="compact_icon"></i>
         </div>
         <div className="mmenu_col">
@@ -54,7 +54,7 @@ const DisplayAccessibility = ({ setVisible }) => {
         </div>
         <span>Keyboard</span>
         <div className="rArrow">
-            <i className="right_icon"></i>
+          <i className="right_icon"></i>
         </div>
       </div>
     </div>

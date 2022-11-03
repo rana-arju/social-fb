@@ -11,14 +11,14 @@ const SearchMenu = ({ color, setShowSearcMenu }) => {
   });
   useEffect(() => {
     input.current.focus();
-  },[])
+  }, []);
   return (
     <div className="header_left search_area scrollbar" ref={menu}>
       <div className="search_wrap">
         <div className="header-logo">
           <div
             className="circle hover1"
-            onClick={() => setShowSearcMenu(false)}
+            onClick={() => setShowSearcMenu((prev) => !prev)}
           >
             <Return color={color} />
           </div>
