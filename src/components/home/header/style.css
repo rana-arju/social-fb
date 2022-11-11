@@ -218,7 +218,7 @@ header {
 .all_menu {
   position: absolute;
   right: -9rem;
-  top: 45px;
+  top: 55px;
   background: var(--bg-secondary);
   border-radius: 10px;
   height: 90vh;
@@ -519,9 +519,9 @@ header {
 }
 /*---responsive----------*/
 @media (max-width: 620px) {
-  .profile_link {
+  /* .profile_link {
     display: none;
-  }
+  } */
   .all_menu {
     width: 485px;
   }
@@ -540,7 +540,7 @@ header {
 @media (max-width: 505px) {
   .all_menu {
     width: 340px;
-    right: -9rem;
+    right: -11rem;
   }
   .all_menu_wrap {
     grid-template-columns: 1fr;
@@ -556,14 +556,14 @@ header {
   }
 }
 @media (max-width: 400px) {
-  .header_right .circle_icon:nth-child(3) {
+  .header_right .circle_icon:nth-child(2) {
     display: none;
   }
   .mmenu {
     width: 340px;
   }
   .all_menu {
-    left: -12.5rem;
+    left: -10.5rem;
   }
 }
 /*---responsive----------*/
