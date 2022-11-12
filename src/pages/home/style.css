@@ -1,0 +1,10 @@
+.home{
+    height: 100vh;
+    background: var(--bg-secondary);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.home_midlle{
+    margin-top: 75px;
+    margin-left: 26.8vw;
+}
