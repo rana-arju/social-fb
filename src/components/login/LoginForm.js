@@ -20,7 +20,6 @@ const LoginForm = ({ setVisible }) => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [login, setLogin] = useState(loginInfos);
-  console.log("login", login);
   const { email, password } = login;
   const handleOnChange = (e) => {
     const { name, value } = e.target;

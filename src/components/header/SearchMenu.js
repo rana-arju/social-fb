@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import useClickOutside from "../../../helpers/ClickOutside";
-import { Return, Search } from "../../../svg";
+import useClickOutside from "../../helpers/ClickOutside";
+import { Return, Search } from "../../svg";
 
 const SearchMenu = ({ color, setShowSearcMenu }) => {
   const menu = useRef(null);

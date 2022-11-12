@@ -1,5 +1,5 @@
 import React from "react";
-import { menu, create } from "../../../data/allMenu";
+import { menu, create } from "../../data/allMenu";
 import AllMenuItems from "./AllMenuItems";
 const AllMenu = () => {
   return (

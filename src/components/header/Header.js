@@ -13,10 +13,10 @@ import {
   Notifications,
   Search,
   Watch,
-} from "../../../svg";
+} from "../../svg";
 import SearchMenu from "./SearchMenu";
 import AllMenu from "./AllMenu";
-import useClickOutside from "../../../helpers/ClickOutside";
+import useClickOutside from "../../helpers/ClickOutside";
 import UserMenu from "./userMenu/UserMenu";
 const Header = () => {
   const { user } = useSelector((user) => ({ ...user }));
@@ -89,7 +89,7 @@ const Header = () => {
 
           {showAllMenu && <AllMenu />}
         </div>
-        <div className="circle_icon">
+        <div className={`circle_icon hover1`}>
           <Messenger />
         </div>
         <div className="circle_icon">
@@ -97,7 +97,7 @@ const Header = () => {
           <div className="right_notification">12</div>
         </div>
         
-        <div className="profile_link hover1" ref={usermenu}>
+        <div className={`profile_link hover1 ${showUserMenu && "active_header"}`} ref={usermenu}>
           <div onClick={() => setShowUserMenu((prev) => !prev)}>
             <div>
               <img src={user?.picture} alt="" />
