@@ -44,6 +44,7 @@ const LoginForm = ({ setVisible }) => {
         Cookies.set("user", JSON.stringify(data));
         navigate("/");
       }, 2000);
+      setLoading(true)
     } catch (error) {
       setLoading(false);
       setError(error.response.data.message);

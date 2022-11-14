@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Activate from "./pages/home/Activate";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
@@ -12,6 +13,7 @@ function App() {
         <Route element={<LoggedinRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/activate/:token" element={<Activate />} />
         </Route>
         <Route element={<NotLoggedin />}>
           <Route path="/login" element={<Login />} exact />
