@@ -50,40 +50,39 @@ const LeftMenu = ({ user }) => {
           </div>
         </div>
       )}
-      <div className="splitter">
-        <div className="shortcut">
-          <div className="heading">Your Shortcuts</div>
-          <div className="edit_shortcut">Edit</div>
-        </div>
-        <div className="shortcut_list">
-          <Shortcut
-            link="https://www.youtube.com/channel/UCYSQkndhRpRGNz76J9WeqXA"
-            img="../../images/ytb.png"
-            name="My Youtube channel"
-          />
-          <Shortcut
-            link="https://www.linkedin.com/in/rana-arju/"
-            img="../../images/linkedin.png"
-            name="Linkedin Account"
-          />
-        </div>
-        <div className={`fb_copyright ${visiable && "relative_fb_copyright"}`}>
-          <Link to="/">Privacy </Link>
-          <span>. </span>
-          <Link to="/">Terms </Link>
-          <span>. </span>
-          <Link to="/">Advertising </Link>
-          <span>. </span>
-          <Link to="/">
-            Ad Choices <i className="ad_choices_icon"></i>{" "}
-          </Link>
-          <span>. </span>
-          <br />
-          <Link to="/"></Link>Cookies <span>. </span>
-          <Link to="/">More </Link>
-          <span>. </span> <br />
-          Meta © 2022
-        </div>
+      <div className="splitter"></div>
+      <div className="shortcut">
+        <div className="heading">Your Shortcuts</div>
+        <div className="edit_shortcut">Edit</div>
+      </div>
+      <div className="shortcut_list">
+        <Shortcut
+          link="https://www.youtube.com/channel/UCYSQkndhRpRGNz76J9WeqXA"
+          img="../../images/ytb.png"
+          name="My Youtube channel"
+        />
+        <Shortcut
+          link="https://www.linkedin.com/in/rana-arju/"
+          img="../../images/linkedin.png"
+          name="Linkedin Account"
+        />
+      </div>
+      <div className={`fb_copyright ${visiable && "relative_fb_copyright"}`}>
+        <Link to="/">Privacy </Link>
+        <span>. </span>
+        <Link to="/">Terms </Link>
+        <span>. </span>
+        <Link to="/">Advertising </Link>
+        <span>. </span>
+        <Link to="/">
+          Ad Choices <i className="ad_choices_icon"></i>{" "}
+        </Link>
+        <span>. </span>
+        <br />
+        <Link to="/"></Link>Cookies <span>. </span>
+        <Link to="/">More </Link>
+        <span>. </span> <br />
+        Meta © 2022
       </div>
     </div>
   );

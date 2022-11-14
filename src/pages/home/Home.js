@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import CreatePost from '../../components/createPost';
 import Header from '../../components/header/Header';
 import LeftMenu from '../../components/home/leftMenu';
 import RightMenu from '../../components/home/right';
@@ -14,11 +15,12 @@ const Home = () => {
         setVisible(false)
     });
     return (
-      <div className='home'>
+      <div className="home">
         <Header />
-        <LeftMenu user = {user} />
-        <div className='home_midlle'>
+        <LeftMenu user={user} />
+        <div className="home_midlle">
           <Stories user={user} />
+          <CreatePost user={user} />
         </div>
         <RightMenu user={user} />
       </div>
