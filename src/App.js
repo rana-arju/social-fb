@@ -4,6 +4,7 @@ import Activate from "./pages/home/Activate";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
+import ResetPass from "./pages/reset";
 import LoggedinRoute from "./routes/LoggedinRoute";
 import NotLoggedin from "./routes/NotLoggedin";
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route element={<NotLoggedin />}>
           <Route path="/login" element={<Login />} exact />
         </Route>
+        <Route path="/reset" element={<ResetPass />} />
       </Routes>
     </div>
   );
