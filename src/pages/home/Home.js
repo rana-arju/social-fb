@@ -6,15 +6,10 @@ import LeftMenu from "../../components/home/leftMenu";
 import RightMenu from "../../components/home/right";
 import EmailVerificatin from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
-import useClickOutside from "../../helpers/ClickOutside";
 import "./style.css";
-const Home = () => {
-  const [visible, setVisible] = useState(true);
+const Home = ({setVisible}) => {
   const { user } = useSelector((state) => ({ ...state }));
-  const el = useRef(null);
-  useClickOutside(el, () => {
-    setVisible(false);
-  });
+
   return (
     <div className="home">
       <Header />
@@ -22,7 +17,7 @@ const Home = () => {
       <div className="home_midlle">
         <Stories user={user} />
         {user.verified === false && <EmailVerificatin user={user} />}
-        <CreatePost user={user} />
+        <CreatePost user={user} setVisible={setVisible} />
       </div>
       <RightMenu user={user} />
     </div>

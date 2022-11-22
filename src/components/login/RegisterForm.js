@@ -45,7 +45,6 @@ const RegisterForm = ({ setVisible }) => {
     return new Date(bYear, bMonth, 0).getDate();
   };
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
-  console.log(user);
   const registerValidation = Yup.object({
     first_name: Yup.string()
       .required("What's Your First Name?")
