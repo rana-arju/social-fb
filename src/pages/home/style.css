@@ -1,5 +1,4 @@
 .home {
-  height: 100vh;
   background: var(--bg-secondary);
   display: grid;
   grid-template-columns: repeat(3, 1fr);

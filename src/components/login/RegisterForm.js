@@ -89,7 +89,6 @@ const RegisterForm = ({ setVisible }) => {
         navigate("/");
       }, 2000);
     } catch (error) {
-      console.log("data", error);
       setLoading(false);
       setSuccess("");
       setError(error.response.data.message);
