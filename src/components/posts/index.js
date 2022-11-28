@@ -1,10 +1,14 @@
-import React from "react";
+import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import Moment from "react-moment";
 import { Dots, Public } from "../../svg";
-const Posts = ({ post }) => {
-  console.log("post", post.createAt);
+import ReactsPopup from "./ReactsPopup";
+import CreateComments from "./CreateComments";
+import PostMenu from "./PostMenu";
+const Posts = ({ post, user }) => {
+  const [visible, setVisible] = useState(false);
+  const [postMenuVisible, setPostMenuVisible] = useState(false);
   return (
     <div className="post">
       <div className="post_header">
@@ -29,13 +33,16 @@ const Posts = ({ post }) => {
             </div>
             <div className="post_profile_privacy_date">
               <Moment fromNow interval={30}>
-                {post.createAt}
+                {post.createdAt}
               </Moment>
               . <Public color="#828387" />
             </div>
           </div>
         </Link>
-        <div className="post_header_right hover1">
+        <div
+          className="post_header_right hover1"
+          onClick={() => setPostMenuVisible((prev) => !prev)}
+        >
           <Dots color="#828387" />
         </div>
       </div>
@@ -60,9 +67,7 @@ const Posts = ({ post }) => {
                   ? "grid_3"
                   : post.images.length === 4
                   ? "grid_4"
-                  : post.images.length >= 5
-                  && "grid_5"
-                  
+                  : post.images.length >= 5 && "grid_5"
               }
             >
               {post.images.slice(0, 5).map((img, i) => (
@@ -76,6 +81,60 @@ const Posts = ({ post }) => {
             </div>
           )}
         </>
+      )}
+      <div className="post_infos">
+        <div className="react_counts">
+          <div className="react_count_imgs"></div>
+          <div className="react_count_num"></div>
+        </div>
+        <div className="to_right">
+          <div className="comment_counts">14 comments</div>
+          <div className="share_count">2 share</div>
+        </div>
+      </div>
+      <div className="post_actions ">
+        <ReactsPopup
+          visible={visible}
+          setVisible={setVisible}
+          postId={post._id}
+        />
+        <div
+          className="post_action hover1"
+          onMouseOver={() =>
+            setTimeout(() => {
+              setVisible(true);
+            }, 500)
+          }
+          onMouseLeave={() =>
+            setTimeout(() => {
+              setVisible(false);
+            }, 500)
+          }
+        >
+          <i className="like_icon"></i>
+          <span>Like</span>
+        </div>
+        <div className="post_action hover1">
+          <i className="comment_icon"></i>
+          <span>Comment</span>
+        </div>
+        <div className="post_action hover1">
+          <i className="share_icon"></i>
+          <span>Share</span>
+        </div>
+      </div>
+      <div className="comments_wrap">
+        <div className="comments_order">
+          <CreateComments user={user} />
+        </div>
+      </div>
+      {postMenuVisible && (
+        <PostMenu
+          userId={user.id}
+          postUserId={post.user._id}
+          imageLength={post?.images?.length}
+          setPostMenuVisible={setPostMenuVisible}
+        />
       )}
     </div>
   );

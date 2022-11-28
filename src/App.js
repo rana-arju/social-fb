@@ -33,9 +33,7 @@ function App() {
     error: "",
     posts: [],
   });
-  useEffect(() => {
-    getAllPosts()
-  },[])
+ 
   const getAllPosts = async () => {
     try {
       dispatch({
@@ -49,19 +47,23 @@ function App() {
           },
         }
       );
+      console.log("data", data);
       dispatch({
         type: "POST_SUCCESS",
         payload: data,
         error: "",
-        loading: false
+        loading: false,
       });
     } catch (error) {
       dispatch({
         type: "POST_FAILED",
-        payload: error.response.data.message,
+        payload: error?.response?.data.message,
       });
     }
   };
+   useEffect(() => {
+     getAllPosts();
+   }, [user]);
   console.log("posts", posts);
   return (
     <div>

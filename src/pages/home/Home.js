@@ -9,23 +9,23 @@ import Stories from "../../components/home/stories";
 import Posts from "../../components/posts";
 import "./style.css";
 const Home = ({ setVisible, posts }) => {
-  const { user } = useSelector((state) => ({ ...state }));
   const middle = useRef(null);
-  const [height, setHeight] = useState();
+
+  const { user } = useSelector((state) => ({ ...state }));
+  const [height, setHeight] = useState(null);
   useEffect(() => {
-    setHeight(middle.current.clientHeight)
+    setHeight(middle.current.clientHeight);
   }, []);
-  console.log("height", height);
   return (
-    <div className="home" style={{height:` ${height + 150}px`}}>
+    <div className="home" style={{height:` ${height + 200}px`}}>
       <Header />
       <LeftMenu user={user} />
       <div className="home_midlle" ref={middle}>
         <Stories user={user} />
-        {user.verified === false && <EmailVerificatin user={user} />}
+        {/* {user.verified === false && <EmailVerificatin user={user} />} */}
         <CreatePost user={user} setVisible={setVisible} />
         <div className="posts">
-          {posts && posts.map((post) => <Posts post={post} key={post._id} />)}
+          {posts && posts.map((post) => <Posts post={post} key={post._id} user={user} />)}
         </div>
       </div>
       <RightMenu user={user} />
