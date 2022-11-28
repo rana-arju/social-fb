@@ -238,7 +238,13 @@
 /*----error and success styles -------*/
 
 /*----Media queries--------------*/
-@media (min-width: 539px) {
+
+@media only screen and (max-width: 1024px) {
+  .login_wrap {
+    max-width: 900px;
+  }
+}
+@media only screen and (min-width: 539px) {
   .login_footer_wrap {
     max-width: 520px;
   }
@@ -256,12 +262,26 @@
     width: 350px;
   }
 }
-@media (min-width: 650px) {
+@media only screen and (min-width: 650px) {
   .login_footer_wrap {
     max-width: 650px;
   }
 }
-@media (min-width: 850px) {
+@media only screen and (max-width: 844px) {
+  .login_footer {
+    display: none;
+  }
+  .open_signup {
+    margin-top: 0;
+  }
+  .input_wrap input {
+    height: 45px !important;
+  }
+  .login_wrap {
+    height: 100vh;
+  }
+}
+@media only screen and (min-width: 850px) {
   .login_wrap {
     display: flex;
     align-items: center;
@@ -293,4 +313,19 @@
   .login_footer_wrap {
     max-width: 900px;
   }
+}
+@media only screen and (max-width: 355px) {
+  .login_2_wrap{
+    width: 100%;
+  }
+   .input_wrap input {
+    width: 90% !important;
+  }
+  .login_2_wrap button{
+    width: 90%;
+    margin: auto;
+  }
+.stories, .createPost, .send_verification, .posts .post{
+  margin-left: 1%;
+}
 }

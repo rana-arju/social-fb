@@ -425,3 +425,86 @@
     width: 100%;
   }
 }
+
+/* Responsive modal */
+
+@media screen and (max-width: 620px) {
+  .postBox {
+    width: 450px;
+  }
+  .flex_center textarea {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .postBox {
+    width: 400px;
+  }
+  .post_input {
+    width: 400px;
+  }
+  .add_pics_inside1 {
+    height: 150px;
+  }
+  .box_profile {
+    padding: 15px 15px 5px 15px;
+  }
+  .add_pics_inside2 {
+    padding: 6px;
+  }
+  .box_header {
+    font-size: 16px;
+    padding: 12px 15px 14px 15px;
+  }
+  .postBox .small_circle {
+    top: 5px;
+    right: 10px;
+  }
+  .post_header_righ {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 410px) {
+  .postBox {
+    width: 350px;
+  }
+  .post_input {
+    width: 350px;
+  }
+  .postBox .small_circle {
+    width: 30px;
+    height: 30px;
+  }
+  .post_emojis_wrap img {
+    width: 30px;
+  }
+  .post_backgrounds img,
+  .no_background {
+    width: 30px;
+    height: 30px;
+  }
+  .addto_text {
+    font: 12px;
+  }
+  .addtoYourPost {
+    padding: 6px;
+  }
+  .add_pics_inside1 {
+    height: 150px;
+  }
+}
+@media screen and (max-width: 360px){
+.postBox{
+  width: 100%;
+}
+.post_input{
+  width: 100%;
+}
+.addto_text{
+  display: none;
+}
+.addtoYourPost{
+  justify-content: space-between;
+}
+}

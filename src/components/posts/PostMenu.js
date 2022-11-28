@@ -8,7 +8,7 @@ const PostMenu = ({ postUserId, userId, imageLength, setPostMenuVisible }) => {
   useClickOutside(menu, () => setPostMenuVisible(false)
   );
   return (
-    <ul className="post_menu" ref={menu} style={postUserId === userId &&{ height: "310px"}}>
+    <ul className="post_menu" ref={menu}>
       {test && <MenuItem icon="pin_icon" title="pin post" />}
       <MenuItem
         icon="save_icon"

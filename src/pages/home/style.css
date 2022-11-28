@@ -2,6 +2,7 @@
   background: var(--bg-secondary);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  overflow-x: hidden;
 }
 .home_midlle {
   margin-top: 75px;
@@ -23,7 +24,7 @@
     width: 10vw;
   }
   .posts .post {
-    width: 100% !important;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 1030px) {
@@ -67,7 +68,8 @@
 }
 @media only screen and (max-width: 960px) {
   .createPost,
-  .send_verification, .posts {
+  .send_verification,
+  .posts {
     width: 93%;
   }
   .stories {
@@ -96,12 +98,14 @@
     display: none;
   }
   .createPost,
-  .send_verification, .stories, .posts {
+  .send_verification,
+  .stories,
+  .posts {
     width: 100%;
   }
 
   .home_midlle {
-    margin-left: 12%;
+    margin-left: 15%;
   }
 }
 @media only screen and (max-width: 805px) {
@@ -180,10 +184,30 @@
     font-size: 11px;
   }
   .home_middle {
-    margin-left: 7%;
+    margin-left: 4% !important;
+  }
+  .comment_input_wrap {
+    width: 90% !important;
   }
 }
-
+@media  only screen and (max-width: 344px){
+  .stories, .createPost, .send_verification, .posts{
+    width: 80% !important;
+  }
+  .posts .post{
+    width: 100% !important;
+  }
+  .createPost_icon{
+    font-size: 10px;
+  }
+  .create_post_header img{
+    width: 32px;
+    height: 32px;
+  }
+  .open_post{
+    height: 30px;
+  }
+}
 /*-----Activate popup----*/
 .popup {
   position: relative;
