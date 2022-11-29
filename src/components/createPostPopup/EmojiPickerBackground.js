@@ -26,15 +26,15 @@ const EmojiPickerBackground = ({
     setCursorPosition(start.length + emoji.length);
   };
   const postBackgrounds = [
-    "../../../images/postbackgrounds/1.jpg",
-    "../../../images/postbackgrounds/2.jpg",
-    "../../../images/postbackgrounds/3.jpg",
-    "../../../images/postbackgrounds/4.jpg",
-    "../../../images/postbackgrounds/5.jpg",
-    "../../../images/postbackgrounds/6.jpg",
-    "../../../images/postbackgrounds/7.jpg",
-    "../../../images/postbackgrounds/8.jpg",
-    "../../../images/postbackgrounds/9.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/7_kbv02a.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/10_unqiy2.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/9_ihyk9s.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/6_sdpyfm.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/5_ucs11b.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/1_nbxqrs.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731200/Post%20Background/8_car51i.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731199/Post%20Background/2_ve1rh5.jpg",
+    "https://res.cloudinary.com/db8l1ulfq/image/upload/v1669731199/Post%20Background/4_q8bkl7.jpg",
   ];
   const BackgroundHandler = (i) => {
     bgRef.current.style.backgroundImage = `url(${postBackgrounds[i]})`;
