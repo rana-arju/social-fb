@@ -497,29 +497,44 @@
   .home_midlle {
     margin-left: 8%;
   }
+  .post .grid_2 img,
+  .post .grid_3 img,
+  .post .grid_4 img,
+  .post .grid_5 img {
+    height: 200px !important;
+  }
+  .post_background {
+    height: 300px !important;
+  }
+  .post .grid_1 {
+    height: 100% !important;
+  }
+  .post .grid_1 img {
+    height: 60% !important;
+  }
 }
 @media only screen and (max-width: 438px) {
   .home_midlle {
     margin-left: 4%;
   }
 }
-@media only screen and (max-width: 415px) {
+/* @media only screen and (max-width: 415px) {
   .post .grid_2 img,
   .post .grid_3 img,
   .post .grid_4 img,
   .post .grid_5 img {
-    height: 240px !important;
+    height: 200px !important;
   }
   .post_background {
-    height: 400px !important;
+    height: 300px !important;
   }
   .post .grid_1 {
     height: 100% !important;
   }
   .post .grid_1 img {
-    height: 450px !important;
+    height: 60% !important;
   }
-}
+} */
 @media only screen and (max-width: 400px) {
   .home_midlle {
     margin-left: 2%;
@@ -527,7 +542,7 @@
 }
 @media only screen and (max-width: 382px) {
   .home_midlle {
-    margin-left: 3%;
+    margin-left: 0;
   }
   .stories {
     grid-template-columns: repeat(6, 16vw) !important;

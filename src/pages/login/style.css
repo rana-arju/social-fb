@@ -326,6 +326,6 @@
     margin: auto;
   }
 .stories, .createPost, .send_verification, .posts .post{
-  margin-left: 1%;
+  margin-left: 5%;
 }
 }

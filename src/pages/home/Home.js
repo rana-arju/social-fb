@@ -17,7 +17,10 @@ const Home = ({ setVisible, posts }) => {
     setHeight(middle.current.clientHeight);
   }, []);
   return (
-    <div className="home" style={{height:` ${height + 200}px`}}>
+    <div
+      className="home"
+      style={!height ? { height: "100vh" } : { height: ` ${height + 200}px` }}
+    >
       <Header />
       <LeftMenu user={user} />
       <div className="home_midlle" ref={middle}>
@@ -25,7 +28,10 @@ const Home = ({ setVisible, posts }) => {
         {/* {user.verified === false && <EmailVerificatin user={user} />} */}
         <CreatePost user={user} setVisible={setVisible} />
         <div className="posts">
-          {posts && posts.map((post) => <Posts post={post} key={post._id} user={user} />)}
+          {posts &&
+            posts.map((post) => (
+              <Posts post={post} key={post._id} user={user} />
+            ))}
         </div>
       </div>
       <RightMenu user={user} />
