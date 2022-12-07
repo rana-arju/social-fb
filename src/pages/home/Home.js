@@ -21,7 +21,7 @@ const Home = ({ setVisible, posts }) => {
       className="home"
       style={!height ? { height: "100vh" } : { height: ` ${height + 200}px` }}
     >
-      <Header />
+      <Header page="home" />
       <LeftMenu user={user} />
       <div className="home_midlle" ref={middle}>
         <Stories user={user} />

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import {
   Friends,
   Gaming,
+  Home,
   HomeActive,
   Logo,
   Market,
@@ -18,7 +19,7 @@ import SearchMenu from "./SearchMenu";
 import AllMenu from "./AllMenu";
 import useClickOutside from "../../helpers/ClickOutside";
 import UserMenu from "./userMenu/UserMenu";
-const Header = () => {
+const Header = ({ page }) => {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
   const [showSearchMenu, setShowSearcMenu] = useState(false);
@@ -55,8 +56,12 @@ const Header = () => {
         <SearchMenu color={color} setShowSearcMenu={setShowSearcMenu} />
       )}
       <div className="header_middle">
-        <Link to="/" className="middle_icon active">
-          <HomeActive color={color} />
+        <Link to="/" className={`middle_icon ${page === "home" && "active"}`}>
+          {page === "home" ? (
+            <HomeActive color={color} />
+          ) : (
+            <Home color={color} />
+          )}
         </Link>
         <Link to="/" className="middle_icon hover1">
           <Friends color={color} />
@@ -96,14 +101,21 @@ const Header = () => {
           <Notifications />
           <div className="right_notification">12</div>
         </div>
-        
-        <div className={`profile_link hover1 ${showUserMenu && "active_header"}`} ref={usermenu}>
+
+        <div
+          className={`profile_link hover1  ${
+            page === "profile" && "active_header"
+          }`}
+          ref={usermenu}
+        >
           <div onClick={() => setShowUserMenu((prev) => !prev)}>
             <div>
               <img src={user?.picture} alt="" />
             </div>
           </div>
-          {showUserMenu && <UserMenu user={user} />}
+          {showUserMenu && (
+            <UserMenu user={user} setShowUserMenu={setShowUserMenu} />
+          )}
         </div>
       </div>
     </header>

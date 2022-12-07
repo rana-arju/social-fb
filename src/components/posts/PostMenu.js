@@ -4,11 +4,10 @@ import MenuItem from "./MenuItem";
 
 const PostMenu = ({ postUserId, userId, imageLength, setPostMenuVisible }) => {
   const [test, setText] = useState(postUserId === userId ? true : false);
-  const menu = useRef(null);
-  useClickOutside(menu, () => setPostMenuVisible(false)
-  );
+
   return (
-    <ul className="post_menu" ref={menu}>
+
+    <ul className="post_menu" >
       {test && <MenuItem icon="pin_icon" title="pin post" />}
       <MenuItem
         icon="save_icon"

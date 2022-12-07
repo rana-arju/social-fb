@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import DisplayAccessibility from "./DisplayAccessibility";
 import HelpSupport from "./HelpSupport";
 import SettingsPrivacy from "./SettingsPrivacy";
-const UserMenu = ({ user }) => {
+const UserMenu = ({ user, setShowUserMenu }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(0);
@@ -20,7 +20,11 @@ const UserMenu = ({ user }) => {
     <div className="mmenu">
       {visible === 0 && (
         <div>
-          <Link to="/profile" className="mmenu_header hover1">
+          <Link
+            to="/profile"
+            className="mmenu_header hover1"
+            onClick={() => setShowUserMenu(false)}
+          >
             <img src={user?.picture} alt="" />
             <div className="mmenu_col">
               <span style={{ textTransform: "capitalize" }}>

@@ -69,6 +69,10 @@ a {
   gap: 6px;
   cursor: pointer;
 }
+.blue_btn,
+.gray_btn span {
+  transform: translateY(-1px);
+}
 /*----Buttons----*/
 .blur {
   position: fixed;

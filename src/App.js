@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CreatePostPopup from "./components/createPostPopup";
+import { postReducer } from "./functions/reducers";
 import Activate from "./pages/home/Activate";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -12,23 +13,10 @@ import ResetPass from "./pages/reset";
 import LoggedinRoute from "./routes/LoggedinRoute";
 import NotLoggedin from "./routes/NotLoggedin";
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "POST_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "POST_SUCCESS":
-      return { ...state, posts: action.payload, loading: false, error: "" };
-    case "POST_FAILED":
-      return { ...state, loading: false, error: action.payload };
-
-    default:
-      return state;
-  }
-}
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
   const [visible, setVisible] = useState(false);
-  const [{ loading, error, posts }, dispatch] = useReducer(reducer, {
+  const [{ loading, error, posts }, dispatch] = useReducer(postReducer, {
     loading: false,
     error: "",
     posts: [],
@@ -77,6 +65,7 @@ function App() {
             element={<Home setVisible={setVisible} posts={posts} />}
           />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="/activate/:token" element={<Activate />} />
         </Route>
         <Route element={<NotLoggedin />}>

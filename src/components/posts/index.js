@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import Moment from "react-moment";
@@ -6,9 +6,13 @@ import { Dots, Public } from "../../svg";
 import ReactsPopup from "./ReactsPopup";
 import CreateComments from "./CreateComments";
 import PostMenu from "./PostMenu";
+import useClickOutside from "../../helpers/ClickOutside";
 const Posts = ({ post, user }) => {
   const [visible, setVisible] = useState(false);
   const [postMenuVisible, setPostMenuVisible] = useState(false);
+  console.log("postMenuVisible", postMenuVisible);
+    const menu = useRef(null);
+    useClickOutside(menu, () => setPostMenuVisible(false));
   return (
     <div className="post">
       <div className="post_header">
@@ -128,14 +132,16 @@ const Posts = ({ post, user }) => {
           <CreateComments user={user} />
         </div>
       </div>
-      {postMenuVisible && (
-        <PostMenu
-          userId={user.id}
-          postUserId={post.user._id}
-          imageLength={post?.images?.length}
-          setPostMenuVisible={setPostMenuVisible}
-        />
-      )}
+      <div ref={menu}>
+        {postMenuVisible && (
+          <PostMenu
+            userId={user.id}
+            postUserId={post.user._id}
+            imageLength={post?.images?.length}
+            setPostMenuVisible={setPostMenuVisible}
+          />
+        )}
+      </div>
     </div>
   );
 };
