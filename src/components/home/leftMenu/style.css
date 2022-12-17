@@ -112,6 +112,8 @@
   color: var(--color-secondary);
 }
 .relative_fb_copyright {
+  color: var(--color-secondary);
+  font-size: 12px;
   position: relative;
   width: 97%;
   margin-top: 2rem;

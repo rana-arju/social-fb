@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import ProfilePicture from "../../components/profilePicture";
 
-const ProfilePictureInfo = ({ profile }) => {
+const ProfilePictureInfo = ({ profile, visitor }) => {
+  const [show, setShow] = useState(true)
   return (
     <div className="profile_img_wrap">
+      {
+        show && <ProfilePicture />
+      }
       <div className="profile_w_left">
         <div className="profile_w_img">
           <div
@@ -12,33 +17,33 @@ const ProfilePictureInfo = ({ profile }) => {
               backgroundImage: `url(${profile.picture})`,
             }}
           ></div>
-          <div className="profile_circle hover1">
-            <i className="camera_filled_icon"></i>
-          </div>
+          {!visitor && (
+            <div className="profile_circle hover1">
+              <i className="camera_filled_icon"></i>
+            </div>
+          )}
         </div>
         <div className="profile_w_col">
           <div className="profile_name">
             {profile.first_name} {profile.last_name}
-            <div className="otherName">(other name)</div>
+            <div className="othername">(other name)</div>
           </div>
-          <div className="profile_friend_count">
-            
-          </div> 
-          <div className="profile_friend_img">
-            
-          </div>
+          <div className="profile_friend_count"></div>
+          <div className="profile_friend_img"></div>
         </div>
       </div>
-      <div className="profile_w_right">
-        <div className="blue_btn">
+      {!visitor && (
+        <div className="profile_w_right">
+          <div className="blue_btn">
             <img src="../../../icons/plus.png" alt="" className="invert" />
             <span>Add Story</span>
-        </div>
-        <div className="gray_btn">
+          </div>
+          <div className="gray_btn">
             <i className="edit_icon"></i>
             <span>Edit Profile</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,20 @@
+.pictureBox{
+    width: 700px;
+    height: 62vh;
+}
+.update_picture_wrap{
+    padding: 10px 15px;
+}
+.update_picture_buttons{
+    display: flex;
+    gap: 10px;
+}
+.update_picture_buttons button{
+    width: 100%;
+}
+.update_picture_buttons .light_blue_btn{
+    color: var(--blue-color);
+}
+.update_img{
+    
+}

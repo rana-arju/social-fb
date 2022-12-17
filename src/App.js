@@ -21,7 +21,7 @@ function App() {
     error: "",
     posts: [],
   });
- 
+
   const getAllPosts = async () => {
     try {
       dispatch({
@@ -49,9 +49,9 @@ function App() {
       });
     }
   };
-   useEffect(() => {
-     getAllPosts();
-   }, [user]);
+  useEffect(() => {
+    getAllPosts();
+  }, [user]);
   console.log("posts", posts);
   return (
     <div>
@@ -64,8 +64,8 @@ function App() {
             path="/"
             element={<Home setVisible={setVisible} posts={posts} />}
           />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/profile" element={<Profile setVisible={setVisible} />} />
+          <Route path="/profile/:username" element={<Profile setVisible={setVisible} />} />
           <Route path="/activate/:token" element={<Activate />} />
         </Route>
         <Route element={<NotLoggedin />}>

@@ -7,14 +7,14 @@ import ReactsPopup from "./ReactsPopup";
 import CreateComments from "./CreateComments";
 import PostMenu from "./PostMenu";
 import useClickOutside from "../../helpers/ClickOutside";
-const Posts = ({ post, user }) => {
+const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
   const [postMenuVisible, setPostMenuVisible] = useState(false);
   console.log("postMenuVisible", postMenuVisible);
     const menu = useRef(null);
     useClickOutside(menu, () => setPostMenuVisible(false));
   return (
-    <div className="post">
+    <div className="post" style={{width:  `${profile && "100%"}`}}>
       <div className="post_header">
         <Link
           to={`/profile/${post.user.username}`}
