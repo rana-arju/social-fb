@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CreatePost from "../../components/createPost";
 import Header from "../../components/header/Header";
+import ProfileIntro from "../../components/intro";
 import Posts from "../../components/posts";
 import { profileReducer } from "../../functions/reducers";
 import Cover from "./Cover";
@@ -18,7 +19,11 @@ const Profile = ({ setVisible }) => {
   const { username } = useParams();
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
+  const [photos, setPhotos] = useState({});
   var userName = username === undefined ? user.username : username;
+  const path = `${userName}/*`;
+  const max = 30;
+  const sort = "desc";
   const [{ loading, error, profile }, dispatch] = useReducer(profileReducer, {
     loading: false,
     error: "",
@@ -40,6 +45,20 @@ const Profile = ({ setVisible }) => {
       if (data.ok === false) {
         navigate("/profile");
       } else {
+        try {
+          const images = await axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/listImages`,
+            { path, sort, max },
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
+          setPhotos(images.data);
+        } catch (error) {
+          console.log(error);
+        }
         dispatch({
           type: "PROFILE_SUCCESS",
           payload: data,
@@ -57,16 +76,23 @@ const Profile = ({ setVisible }) => {
   useEffect(() => {
     getProfile();
   }, [userName]);
-  console.log(profile);
   var visitor = userName === user.username ? false : true;
-
+  console.log("profile", photos.resources);
   return (
     <div className="profile">
       <Header page="profile" />
       <div className="profile_top">
         <div className="profile_container">
-          <Cover cover={profile.Cover} visitor={visitor} />
-          <ProfilePictureInfo profile={profile} visitor={visitor} />
+          <Cover
+            cover={profile.cover}
+            visitor={visitor}
+            photos={photos.resources}
+          />
+          <ProfilePictureInfo
+            profile={profile}
+            visitor={visitor}
+            photos={photos.resources}
+          />
           <ProfileMenu />
         </div>
       </div>
@@ -76,12 +102,10 @@ const Profile = ({ setVisible }) => {
             {!visitor && <PplYouMayKnow />}
             <div className="profile_grid">
               <div className="profile_left">
-                <Photos username={userName} token={user.token} />
+                <ProfileIntro details={profile.details} visitor={visitor} />
+                <Photos photos={photos} />
                 <Friends friends={profile.friends} />
-                <div
-                  className= "relative_fb_copyright"
-                 
-                >
+                <div className="relative_fb_copyright">
                   <Link to="/">Privacy </Link>
                   <span>. </span>
                   <Link to="/">Terms </Link>

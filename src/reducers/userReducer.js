@@ -7,6 +7,8 @@ export function userReducer(state = Cookies.get('user') ? JSON.parse(Cookies.get
       return null;
     case "VERIFY":
       return { ...state, verified: action.payload};
+  case "UPDATEPICTURE":
+      return { ...state, picture: action.payload};
 
     default:
       return state;
