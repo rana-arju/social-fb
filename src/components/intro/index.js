@@ -20,16 +20,19 @@ const ProfileIntro = ({ details, visitor }) => {
     instagram: details?.instagram ? details.instagram : "rana-arju",
   };
   const [infos, setInfos] = useState(initial);
-  const handleBioChange = () => {
-    
-  }
+  const [max, setMax] = useState(infos?.bio ? 100 - infos?.bio?.length : 100);
+  const handleBioChange = (e) => {
+    setInfos({...infos, bio: e.target.value})
+    setMax(100 - e.target.value.length)
+  };
+
   return (
     <div className="profile_card">
       <div className="profile_card_header">Intro</div>
-      {infos.bio && (
+      {infos.bio && !showBio && (
         <div className="info_col">
           <span className="info_text">{infos.bio}</span>
-          {!visitor && <button className="gray_btn hover1">Edit bio</button>}
+          {!visitor && <button className="gray_btn hover1" onClick={() =>setShowBio(true)}>Edit bio</button>}
         </div>
       )}
       {showBio && (
@@ -37,6 +40,7 @@ const ProfileIntro = ({ details, visitor }) => {
           setShowBio={setShowBio}
           infos={infos}
           handleBioChange={handleBioChange}
+          max={max}
         />
       )}
       {infos.job && infos.workplace ? (
