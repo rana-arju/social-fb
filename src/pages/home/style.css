@@ -192,7 +192,7 @@
 }
 @media  only screen and (max-width: 344px){
   .stories, .createPost, .send_verification, .posts{
-    width: 80% !important;
+    width: 90% !important;
   }
   .posts .post{
     width: 100% !important;
@@ -206,6 +206,22 @@
   }
   .open_post{
     height: 30px;
+  }
+  .absolute_wrap_header{
+    font-size: 20px;
+  }
+  .mmenu{
+    width: 300px;
+    margin-top: 6px;
+  }
+  .mmenu_col span:first-of-type{
+    font-size: 14px;
+  }
+  .mmenu_col span:last-of-type{
+    font-size: 12px;
+  }
+  .all_menu_header{
+    font-size: 20px;
   }
 }
 /*-----Activate popup----*/
