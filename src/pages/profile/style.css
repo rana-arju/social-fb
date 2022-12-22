@@ -323,38 +323,6 @@
   object-fit: cover;
   border-radius: 10px;
 }
-/*-----profile card--------*/
-@media (max-width: 900px) {
-  .profile_w_left {
-    flex-direction: column;
-    align-items: center;
-  }
-  .profile_w_col {
-    transform: translateY(-3.6rem);
-  }
-  .profile_w_right {
-    transform: translateY(-3.6rem);
-  }
-  .profile_img_wrap {
-    flex-direction: column;
-    justify-content: center;
-  }
-  .profile_circle {
-    right: 1rem;
-  }
-  .profile_name {
-    padding-bottom: 10px;
-    flex-direction: column;
-  }
-  .pplumayknow {
-    display: none;
-  }
-  .profile_grid {
-    grid-template-columns: 1fr;
-    width: 95%;
-  }
-}
-
 /* Cover Photo add / update */
 .cover_cropper {
   height: 100%;
@@ -423,7 +391,7 @@
   grid-template-columns: repeat(2, 1fr);
   padding: 5px 15px;
 }
-.selectCoverBox_link{
+.selectCoverBox_link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,7 +400,160 @@
   padding: 5px 0 10px 0;
   cursor: pointer;
 }
-.selectCoverBox_link:first-of-type{
+.selectCoverBox_link:first-of-type {
   color: var(--blue-color);
   border-bottom: 3px solid var(--blue-color);
+}
+/*-----profile card--------*/
+@media (max-width: 900px) {
+  .profile_w_left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile_w_col {
+    transform: translateY(-3.6rem);
+  }
+  .profile_w_right {
+    transform: translateY(-3.6rem);
+  }
+  .profile_img_wrap {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profile_right .posts{
+    width: 100%;
+  }
+  .profile_circle {
+    right: 1rem;
+  }
+  .profile_name {
+    padding-bottom: 10px;
+    flex-direction: column;
+  }
+  .pplumayknow {
+    display: none;
+  }
+  .profile_grid {
+    grid-template-columns: 1fr;
+  }
+  .profile_grid .createPost {
+    width: 100% !important;
+  }
+  .bottom_container {
+    padding: 10px;
+  }
+  .relative_fb_copyright{
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  .profile_menu_wrap {
+    display: none;
+  }
+  .profile_cover {
+    height: 330px;
+  }
+  .profile_right .createPost,
+  .profile_right .posts {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile_cover {
+    height: 300px;
+  }
+  .profile_w_col {
+    transform: translateY(-4.6rem) !important;
+  }
+  .profile_w_bg {
+    width: 160px;
+    height: 160px;
+  }
+  .post_updated_picture {
+    width: 350px;
+    height: 350px;
+  }
+  .udpate_cover_wrapper {
+    bottom: 3rem;
+  }
+  .profile_right .createPost {
+    margin-left: 0;
+  }
+}
+@media (max-width: 410px) {
+  .profile_cover {
+    width: 100%;
+  }
+  .bottom_container{
+    padding: 10px 0;
+  }
+  .post_header_left img{
+    width: 35px;
+    height: 35px;
+  }
+  .post_updated_picture {
+    width: 300px;
+    height: 300px;
+  }
+  .post_profile_wrap{
+    height: 400px;
+  }
+  .profile_update_bg{
+    height: 270px;
+  }
+  .profile_right .posts, .profile_right .createPost{
+    width: 93%;
+    margin: 1rem auto;
+  }
+  .relative_fb_copyright{
+    width: 93%;
+    margin: 2rem auto 0 auto;
+  }
+  .profile_card{
+    margin: 10px auto;
+  }
+  .post_profile_name{
+    font-size: 12px;
+  }
+  .no_posts{
+    font-size: 16px;
+  }
+}
+@media (max-width: 352px) {
+  .profile_cover{
+    height: 220px;
+  }
+  .open_cover_update{
+    padding: 6px 8px;
+  }
+  .profile_w_bg {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  .profile_name{
+    padding-bottom: 1px;
+    gap: 5px;
+    font-size: 25px;
+  }
+  .othername{
+    font-size: 18px;
+  }
+  .profile_right .posts{
+    width: 93% !important;
+  }
+  .profile_right .posts .post{
+    width: 93% !important;
+    margin-left: 0% !important;
+  }
+  .post_updated_picture{
+    width: 250px;
+    height: 250px;
+  }
+  .profile_update_bg{
+    height: 230px;
+  }
+  .bottom_container{
+    padding: 0;
+  }
 }

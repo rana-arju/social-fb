@@ -17,6 +17,7 @@ import ProfilePictureInfo from "./ProfilePictureInfo";
 import "./style.css";
 const Profile = ({ setVisible }) => {
   const { username } = useParams();
+  const [othername, setOthername] = useState();
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
   const [photos, setPhotos] = useState({});
@@ -76,8 +77,12 @@ const Profile = ({ setVisible }) => {
   useEffect(() => {
     getProfile();
   }, [userName]);
+  useEffect(() => {
+    setOthername(profile?.details?.otherName);
+  }, [profile]);
   var visitor = userName === user.username ? false : true;
   console.log("profile", photos.resources);
+  console.log("hi", profile?.details?.otherName);
   return (
     <div className="profile">
       <Header page="profile" />
@@ -92,6 +97,7 @@ const Profile = ({ setVisible }) => {
             profile={profile}
             visitor={visitor}
             photos={photos.resources}
+            othername={othername}
           />
           <ProfileMenu />
         </div>
@@ -102,7 +108,11 @@ const Profile = ({ setVisible }) => {
             {!visitor && <PplYouMayKnow />}
             <div className="profile_grid">
               <div className="profile_left">
-                <ProfileIntro details={profile.details} visitor={visitor} />
+                <ProfileIntro
+                  detailss={profile.details}
+                  visitor={visitor}
+                  setOthername={setOthername}
+                />
                 <Photos photos={photos} />
                 <Friends friends={profile.friends} />
                 <div className="relative_fb_copyright">

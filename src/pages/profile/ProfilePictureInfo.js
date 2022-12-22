@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import ProfilePicture from "../../components/profilePicture";
-const ProfilePictureInfo = ({ profile, visitor, photos }) => {
+const ProfilePictureInfo = ({ profile, visitor, photos,othername }) => {
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
   return (
@@ -28,7 +28,10 @@ const ProfilePictureInfo = ({ profile, visitor, photos }) => {
         <div className="profile_w_col">
           <div className="profile_name">
             {profile.first_name} {profile.last_name}
-            <div className="othername">(other name)</div>
+            {
+              othername && 
+            <div className="othername">({othername})</div>
+            }
           </div>
           <div className="profile_friend_count"></div>
           <div className="profile_friend_img"></div>
