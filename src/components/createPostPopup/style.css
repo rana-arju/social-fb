@@ -89,10 +89,17 @@
   color: var(--color-primary);
 }
 .flex_center textarea {
-  min-height: 90%;
+  min-height: 90px;
   background: transparent;
-  overflow-y: hidden;
+  overflow-y: visible;
   position: absolute;
+}
+.flex_center {
+  min-height: 90px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .post_emojis_wrap {
   position: relative;
@@ -464,6 +471,15 @@
     width: 30px;
     height: 30px;
   }
+
+  .post_backgrounds {
+    /* width: 80%; */
+    overflow-x: auto;
+  }
+  .post_backgrounds img {
+    width: 30px;
+    height: 30px;
+  }
 }
 @media screen and (max-width: 410px) {
   .postBox {
@@ -493,18 +509,25 @@
   .add_pics_inside1 {
     height: 150px;
   }
+   .preview_actions {
+    flex-direction: column;
+    gap: 2px;
+  }
+    .mobile_text {
+    width: 50%;
+  }
 }
-@media screen and (max-width: 360px){
-.postBox{
-  width: 100%;
-}
-.post_input{
-  width: 100%;
-}
-.addto_text{
-  display: none;
-}
-.addtoYourPost{
-  justify-content: space-between;
-}
+@media screen and (max-width: 360px) {
+  .postBox {
+    width: 100%;
+  }
+  .post_input {
+    width: 100%;
+  }
+  .addto_text {
+    display: none;
+  }
+  .addtoYourPost {
+    justify-content: space-between;
+  }
 }
