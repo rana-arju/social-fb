@@ -584,3 +584,25 @@
     font-weight: 600;
   }
 }
+.scrollFixed .profile_left{
+  position: fixed;
+  width: 360px;
+}
+.scrollFixed .profile_right{
+ margin-left: 370px;
+ width: 504px;
+}
+.showMore .profile_left{
+  top: 54px;
+}
+.showLess .profile_left{
+  bottom: 10px;
+}
+
+/* Friendship component style */
+.friendship{
+  transform: translateY(-4rem);
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+}

@@ -3,7 +3,7 @@ export const updateProfilepicture = async (url,id, token) => {
   try {
     const { data } = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/updateProfilePicture`,
-      { url,id },
+      { url },
       {
         headers: {
           Authorization: `Bearer ${token}`,

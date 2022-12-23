@@ -530,4 +530,8 @@
   .addtoYourPost {
     justify-content: space-between;
   }
+  .bgHandler {
+  height: 250px;
+
+}
 }

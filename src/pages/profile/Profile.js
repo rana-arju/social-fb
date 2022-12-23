@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CreatePost from "../../components/createPost";
@@ -14,8 +14,11 @@ import Photos from "./Photos";
 import PplYouMayKnow from "./PplYouMayKnow";
 import ProfileMenu from "./ProfileMenu";
 import ProfilePictureInfo from "./ProfilePictureInfo";
+import { useMediaQuery } from "react-responsive";
+
 import "./style.css";
 const Profile = ({ setVisible }) => {
+ 
   const { username } = useParams();
   const [othername, setOthername] = useState();
   const navigate = useNavigate();
@@ -37,6 +40,7 @@ const Profile = ({ setVisible }) => {
       });
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userName}`,
+
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -81,12 +85,29 @@ const Profile = ({ setVisible }) => {
     setOthername(profile?.details?.otherName);
   }, [profile]);
   var visitor = userName === user.username ? false : true;
-  console.log("profile", photos.resources);
-  console.log("hi", profile?.details?.otherName);
+  const profileTop = useRef(null);
+  const [height, setHeight] = useState();
+  const leftSide = useRef(null);
+  const [leftHeight, setLeftHeight] = useState();
+  const [scrollHeight, setScrollHeight] = useState();
+  useEffect(() => {
+    setHeight(profileTop.current.clientHeight + 300);
+    setLeftHeight(leftSide.current.clientHeight + 300);
+    return () => {
+      window.addEventListener("scroll", getScroll, { passive: true });
+    };
+  }, [loading, scrollHeight]);
+  const check = useMediaQuery({
+    query: "(min-width:901px)",
+  });
+  const getScroll = () => {
+    setScrollHeight(window.pageYOffset);
+  };
+  console.log(profile);
   return (
     <div className="profile">
       <Header page="profile" />
-      <div className="profile_top">
+      <div className="profile_top" ref={profileTop}>
         <div className="profile_container">
           <Cover
             cover={profile.cover}
@@ -106,8 +127,17 @@ const Profile = ({ setVisible }) => {
         <div className="profile_container">
           <div className="bottom_container">
             {!visitor && <PplYouMayKnow />}
-            <div className="profile_grid">
-              <div className="profile_left">
+            <div
+              className={`profile_grid ${
+                check && scrollHeight >= height && leftHeight > 1000
+                  ? "scrollFixed showLess"
+                  : check &&
+                    scrollHeight >= height &&
+                    leftHeight < 1000 &&
+                    "scrollFixed showMore"
+              }`}
+            >
+              <div className="profile_left" ref={leftSide}>
                 <ProfileIntro
                   detailss={profile.details}
                   visitor={visitor}
