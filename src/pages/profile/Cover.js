@@ -84,7 +84,7 @@ const Cover = ({ cover, visitor, photos }) => {
 
       const update_picture = await updateProfileCover(
         res[0].url,
-        user.id,
+      
         user.token
       );
       if (update_picture === "ok") {
