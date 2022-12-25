@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import ProfilePicture from "../../components/profilePicture";
 import Friendship from "./Friendship";
 const ProfilePictureInfo = ({ profile, visitor, photos,othername }) => {
+  console.log("hello profile", profile);
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
   return (
@@ -30,6 +31,11 @@ const ProfilePictureInfo = ({ profile, visitor, photos,othername }) => {
           <div className="profile_name">
             {profile.first_name} {profile.last_name}
             {othername && <div className="othername">({othername})</div>}
+            {profile.verified && (
+              <span>
+                <i className="blue_tick"></i>
+              </span>
+            )}
           </div>
           <div className="profile_friend_count"></div>
           <div className="profile_friend_img"></div>

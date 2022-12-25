@@ -764,3 +764,12 @@
   background-repeat: no-repeat;
   display: inline-block;
 }
+.blue_tick {
+    background-image: url("../../../public/icons/icons6.png");
+  background-position: -84px -92px;
+  background-size: auto;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}

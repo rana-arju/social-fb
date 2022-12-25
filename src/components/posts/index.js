@@ -10,9 +10,9 @@ import useClickOutside from "../../helpers/ClickOutside";
 const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
   const [postMenuVisible, setPostMenuVisible] = useState(false);
-  console.log("postMenuVisible", postMenuVisible);
   const menu = useRef(null);
   useClickOutside(menu, () => setPostMenuVisible(false));
+  console.log(post);
   return (
     <div className="post" style={{ width: `${profile && "100%"}` }}>
       <div className="post_header">
@@ -24,6 +24,12 @@ const Posts = ({ post, user, profile }) => {
           <div className="header_col">
             <div className="post_profile_name">
               {post.user.first_name} {post.user.last_name}
+              {post?.user?.verified &&
+                !post.type && (
+                  <span>
+                    <i className="blue_tick"></i>
+                  </span>
+                )}
               <div className="updated_p">
                 {post.type === "profilePicture" &&
                   `updated ${
