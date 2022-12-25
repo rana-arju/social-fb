@@ -31,18 +31,14 @@ const ProfilePictureInfo = ({ profile, visitor, photos,othername }) => {
           <div className="profile_name">
             {profile.first_name} {profile.last_name}
             {othername && <div className="othername">({othername})</div>}
-            {profile.verified && (
-              <span>
-                <i className="blue_tick"></i>
-              </span>
-            )}
+            {profile.verified && <i className="blue_tick"></i>}
           </div>
           <div className="profile_friend_count"></div>
           <div className="profile_friend_img"></div>
         </div>
       </div>
-      {!visitor ? (
-        <Friendship friendship={profile.friendship} />
+      {visitor ? (
+        <Friendship friendshipp={profile.friendship} id={profile._id} />
       ) : (
         <div className="profile_w_right">
           <div className="blue_btn">

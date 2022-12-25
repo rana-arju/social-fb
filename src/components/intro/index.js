@@ -36,7 +36,7 @@ const ProfileIntro = ({ detailss, visitor, setOthername }) => {
         `${process.env.REACT_APP_BACKEND_URL}/userDetailsUpdate`,
         {
           infos,
-          id: user.id,
+      
         },
         {
           headers: {
