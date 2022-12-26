@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import ProfilePicture from "../../components/profilePicture";
 import Friendship from "./Friendship";
-const ProfilePictureInfo = ({ profile, visitor, photos,othername }) => {
+const ProfilePictureInfo = ({ profile, visitor, photos, othername }) => {
   console.log("hello profile", profile);
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
@@ -33,8 +34,26 @@ const ProfilePictureInfo = ({ profile, visitor, photos,othername }) => {
             {othername && <div className="othername">({othername})</div>}
             {profile.verified && <i className="blue_tick"></i>}
           </div>
-          <div className="profile_friend_count"></div>
-          <div className="profile_friend_img"></div>
+          <div className="profile_friend_count">
+            {" "}
+            {profile?.friends && (
+              <div className="profile_card_count">
+                {profile?.friends.length === 0
+                  ? ""
+                  : profile?.friends.length === 1
+                  ? "1 Friend"
+                  : `${profile?.friends.length} Friends`}
+              </div>
+            )}
+          </div>
+          <div className="profile_friend_img">
+            {profile?.friends &&
+              profile?.friends.slice(0, 6).map((friend, i) => (
+                <Link to={`/profile/${friend.username}`} key={i}>
+                  <img src={friend.picture} alt="" />
+                </Link>
+              ))}
+          </div>
         </div>
       </div>
       {visitor ? (

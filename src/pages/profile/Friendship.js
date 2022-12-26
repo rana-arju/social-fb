@@ -59,7 +59,7 @@ const Friendship = ({ friendshipp, id }) => {
     });
     await unfriend(id, user.token);
   };
-  const daleteRequestHandler = async () => { 
+  const daleteRequestHandler = async () => {
     setFriendship({
       ...friendship,
       friends: false,
@@ -163,28 +163,30 @@ const Friendship = ({ friendshipp, id }) => {
           </div>
         )
       )}
-      {friendship?.following ? (
-        <button  className="gray_btn" onClick={() => unfollowHandler()}>
-          <img src="../../../icons/follow.png" alt="" />
-          <span>following</span>
+      <div className="flex">
+        {friendship?.following ? (
+          <button className="gray_btn" onClick={() => unfollowHandler()}>
+            <img src="../../../icons/follow.png" alt="" />
+            <span>following</span>
+          </button>
+        ) : (
+          <button className="blue_btn" onClick={() => followHandler()}>
+            <img src="../../../icons/follow.png" alt="" className="invert" />
+            <span>Follow</span>
+          </button>
+        )}
+        <button
+          className={friendship?.friends ? "blue_btn" : "gray_btn"}
+          onClick={() => setFriendMenu(true)}
+        >
+          <img
+            src="../../../icons/message.png"
+            alt=""
+            className={friendship?.friends && "invert"}
+          />
+          <span>Message</span>
         </button>
-      ) : (
-        <button className="blue_btn" onClick={() => followHandler()}>
-          <img src="../../../icons/follow.png" alt="" className="invert" />
-          <span>Follow</span>
-        </button>
-      )}
-      <button
-        className={friendship?.friends ? "blue_btn" : "gray_btn"}
-        onClick={() => setFriendMenu(true)}
-      >
-        <img
-          src="../../../icons/message.png"
-          alt=""
-          className={friendship?.friends && "invert"}
-        />
-        <span>Message</span>
-      </button>
+      </div>
     </div>
   );
 };
