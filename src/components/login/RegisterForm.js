@@ -49,13 +49,13 @@ const RegisterForm = ({ setVisible }) => {
     first_name: Yup.string()
       .required("What's Your First Name?")
       .min(3, "First Name Must be between 3 to 16 letter")
-      .max(16, "First Name Must be between 3 to 16 letter")
-      .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
+      .max(16, "First Name Must be between 3 to 16 letter"),
+      // .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
     last_name: Yup.string()
       .required("What's Your Surname?")
       .min(3, "Last Name Must be between 3 to 16 letter")
-      .max(16, "Last Name Must be between 3 to 16 letter")
-      .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
+      .max(16, "Last Name Must be between 3 to 16 letter"),
+      // .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
     email: Yup.string()
       .required(
         "You'll need this when you log in and if you ever need to reset your password"

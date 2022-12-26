@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import Moment from "react-moment";
@@ -7,11 +7,30 @@ import ReactsPopup from "./ReactsPopup";
 import CreateComments from "./CreateComments";
 import PostMenu from "./PostMenu";
 import useClickOutside from "../../helpers/ClickOutside";
+import { getReacts, reactPost } from "../../functions/Post";
 const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
+  const [reacts, setReact] = useState();
+  const [check, setCheck] = useState();
   const [postMenuVisible, setPostMenuVisible] = useState(false);
   const menu = useRef(null);
   useClickOutside(menu, () => setPostMenuVisible(false));
+  useEffect(() => {
+    getPostReacts();
+  }, [post]);
+  const getPostReacts = async () => {
+    const res = await getReacts(post._id, user.token);
+    setReact(res.reacts);
+    setCheck(res.check);
+  };
+  const reactHandler = async (type) => {
+    reactPost(post._id, type, user.token);
+    if (check == type) {
+      setCheck();
+    } else {
+      setCheck(type);
+    }
+  };
   return (
     <div className="post" style={{ width: `${profile && "100%"}` }}>
       <div className="post_header">
@@ -23,10 +42,9 @@ const Posts = ({ post, user, profile }) => {
           <div className="header_col">
             <div className="post_profile_name">
               {post.user.first_name} {post.user.last_name}
-              {post?.user?.verified &&
-                !post.type && (
-                    <i className="blue_tick"></i>
-                )}
+              {post?.user?.verified && !post.type && (
+                <i className="blue_tick"></i>
+              )}
               <div className="updated_p">
                 {post.type === "profilePicture" &&
                   `updated ${
@@ -118,7 +136,7 @@ const Posts = ({ post, user, profile }) => {
         <ReactsPopup
           visible={visible}
           setVisible={setVisible}
-          postId={post._id}
+          reactHandler={reactHandler}
         />
         <div
           className="post_action hover1"
@@ -132,9 +150,40 @@ const Posts = ({ post, user, profile }) => {
               setVisible(false);
             }, 500)
           }
+          onClick = {() => reactHandler(check ? check: "like")}
         >
-          <i className="like_icon"></i>
-          <span>Like</span>
+          {check ? (
+            <img
+              src={`../../../reacts/${check}.svg`}
+              alt=""
+              className="small_react"
+              style={{ width: "18px" }}
+            />
+          ) : (
+            <i className="like_icon"></i>
+          )}
+          <span
+            style={{
+              textTransform: "capitalize",
+              color: `${
+                check === "like"
+                  ? "#4267b2"
+                  : check === "love"
+                  ? "#f63459"
+                  : check === "haha"
+                  ? "#f7b125"
+                  : check === "sad"
+                  ? "#f7b125"
+                  : check === "angry"
+                  ? "#e4605a"
+                  : check === "wow"
+                  ? "#f7b125"
+                  : ""
+              }`,
+            }}
+          >
+            {check ? check : "Like"}
+          </span>
         </div>
         <div className="post_action hover1">
           <i className="comment_icon"></i>

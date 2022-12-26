@@ -1,5 +1,4 @@
 import React from "react";
-import { reactPost } from "../../functions/Post";
 import { useSelector } from "react-redux";
 const reactsArray = [
   {
@@ -9,7 +8,11 @@ const reactsArray = [
   {
     name: "love",
     image: "../../../reacts/love.gif",
-  },
+  }, 
+  // {
+  //   name: "care",
+  //   image: "../../../reacts/care.gif",
+  // },
   {
     name: "haha",
     image: "../../../reacts/haha.gif",
@@ -27,11 +30,9 @@ const reactsArray = [
     image: "../../../reacts/angry.gif",
   },
 ];
-const ReactsPopup = ({ visible, setVisible, postId }) => {
+const ReactsPopup = ({ visible, setVisible, reactHandler}) => {
   const { user } = useSelector((state) => ({ ...state }));
-  const reactHandler = async (type) => {
-    reactPost(postId, type, user.token, user.id);
-  };
+
   return (
     <>
       {visible && (

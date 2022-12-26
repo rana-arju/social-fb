@@ -59,7 +59,7 @@ const UpdateProfilePicture = ({ setImage, image, setError, setShow, pRef }) => {
 
       const update_picture = await updateProfilepicture(
         res[0].url,
-        user.id,
+       
         user.token
       );
       if (update_picture === "ok") {
