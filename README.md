@@ -32,6 +32,9 @@ Full-Stack facebook Clone using MERN Stack(MongoDb, express js, React js, Nodejs
 - Login using Email/Username
 - Update Profile/Password User Account
 - Infinite Scroll Posts
+- Profile picture upload with resize
+- Cover photo upload with resize
+- Blue verified badge for authentic profile
 - Any one can post, with background image and text, image and text or without image and background image only text and emoji
 - Suggested Users
 - Search User Accounts by Name/Username
@@ -53,19 +56,28 @@ Full-Stack facebook Clone using MERN Stack(MongoDb, express js, React js, Nodejs
 
 Branch [dev-v3-cloudinary](https://github.com/jigar-sable/instagram-mern/tree/dev-v3-cloudinary) uses Cloudinary to store images.
 
-## Sneak Peek of Home Page 🙈 :
-![home](https://user-images.githubusercontent.com/64949957/159116089-cfc2b4c5-dc7d-4d4b-a0c8-668f89ce5412.png)
+## Home Page 🙈 :
+![Home](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145494/github%20image/home_page_q7r3wj.png)
+## Home Page 🙈 :
+![Profile Page](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145495/github%20image/profile_page_cssujl.png)
 
-<!-- <table>
+<table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/64949957/159116105-15b9425c-1fec-4a52-84ba-cf97eef93891.png" alt="mockup" /></td>
-    <td><img src="https://user-images.githubusercontent.com/64949957/159116112-1c7dec3e-0f3a-45a8-83d3-6d6b9ee1d5de.png" alt="mockups" /></td>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145449/github%20image/signup_zjksew.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145447/github%20image/login_bz89cs.png" alt="mockups" /></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/64949957/159116115-46f15626-372d-4349-8ef4-a04a70600dcc.png" alt="mockup" /></td>
-    <td><img src="https://user-images.githubusercontent.com/64949957/159116118-ac3d261b-eb50-4a7b-a8e6-cd1a0f5720de.png" alt="mockups" /></td>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145448/github%20image/comment_gyjutn.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145448/github%20image/post_popup_dsefow.png" alt="mockups" /></td>
+  </tr> 
+  <tr>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145449/github%20image/cover_or_profile_photo_select_from_existing_photo_enihuz.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145449/github%20image/profile_photo_crop_apwome.png" alt="mockups" /></td>
+  </tr>  <tr>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145449/github%20image/profile_menu_yd6bzd.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145448/github%20image/menu_jja8n2.png" alt="mockups" /></td>
   </tr>
-</table> -->
+</table>
 
 <h2>📬 Contact</h2>
 

@@ -110,7 +110,10 @@ const CreateComments = ({ user }) => {
       {commentImage && (
         <div className="comment_img_preview">
           <img src={commentImage} alt="" />
-          <div className="small_white_circle" onClick={() => setCommentImage("")}>
+          <div
+            className="small_white_circle"
+            onClick={() => setCommentImage("")}
+          >
             <i className="exit_icon"></i>
           </div>
         </div>
