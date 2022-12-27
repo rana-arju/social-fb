@@ -28,7 +28,7 @@ export default function Friends({ friends }) {
               <img
                 src={friend.picture}
                 alt={friend.first_name}
-                style={{ transform: `translateX(${-i*7}px)`, zIndex: `${i}` }}
+                
               />
               <span>
                 {friend.first_name} {friend.last_name}

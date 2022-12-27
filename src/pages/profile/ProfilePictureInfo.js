@@ -50,7 +50,15 @@ const ProfilePictureInfo = ({ profile, visitor, photos, othername }) => {
             {profile?.friends &&
               profile?.friends.slice(0, 6).map((friend, i) => (
                 <Link to={`/profile/${friend.username}`} key={i}>
-                  <img src={friend.picture} alt="" />
+                  <img
+                    src={friend.picture}
+                    alt=""
+                    style={{
+                      transform: `translateX(${-i * 7}px)`,
+                      zIndex: `${i}`,
+                    }}
+                
+                  />
                 </Link>
               ))}
           </div>

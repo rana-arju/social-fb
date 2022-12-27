@@ -12,6 +12,7 @@ const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
   const [reacts, setReact] = useState();
   const [check, setCheck] = useState();
+  const [total, setTotal] = useState(0);
   const [postMenuVisible, setPostMenuVisible] = useState(false);
   const menu = useRef(null);
   useClickOutside(menu, () => setPostMenuVisible(false));
@@ -22,15 +23,32 @@ const Posts = ({ post, user, profile }) => {
     const res = await getReacts(post._id, user.token);
     setReact(res.reacts);
     setCheck(res.check);
+    setTotal(res.total);
   };
   const reactHandler = async (type) => {
     reactPost(post._id, type, user.token);
     if (check == type) {
       setCheck();
+      let index = reacts.findIndex((x) => x.react == check);
+      if (index !== -1) {
+        setReact([...reacts, (reacts[index].count = --reacts[index].count)]);
+        setTotal((prev) => --prev);
+      }
     } else {
       setCheck(type);
+      let index = reacts.findIndex((x) => x.react == type);
+      let index1 = reacts.findIndex((x) => x.react == check);
+      if (index !== -1) {
+        setReact([...reacts, (reacts[index].count = ++reacts[index].count)]);
+        setTotal((prev) => ++prev);
+      }
+      if (index1 !== -1) {
+        setReact([...reacts, (reacts[index1].count = --reacts[index1].count)]);
+        setTotal((prev) => --prev);
+      }
     }
   };
+  console.log(total);
   return (
     <div className="post" style={{ width: `${profile && "100%"}` }}>
       <div className="post_header">
@@ -124,8 +142,21 @@ const Posts = ({ post, user, profile }) => {
       )}
       <div className="post_infos">
         <div className="react_counts">
-          <div className="react_count_imgs"></div>
-          <div className="react_count_num"></div>
+          <div className="react_count_imgs">
+            {reacts &&
+              reacts
+                .sort((a, b) => {
+                  return b.count - a.count;
+                })
+                .slice(0, 3)
+                .map(
+                  (react) =>
+                    react.count > 0 && (
+                      <img src={`../../../reacts/${react.react}.svg`} alt="" />
+                    )
+                )}
+          </div>
+          <div className="react_count_num">{total > 0 && total}</div>
         </div>
         <div className="to_right">
           <div className="comment_counts">14 comments</div>
@@ -150,7 +181,7 @@ const Posts = ({ post, user, profile }) => {
               setVisible(false);
             }, 500)
           }
-          onClick = {() => reactHandler(check ? check: "like")}
+          onClick={() => reactHandler(check ? check : "like")}
         >
           {check ? (
             <img
