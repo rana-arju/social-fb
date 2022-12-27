@@ -8,16 +8,22 @@ import CreateComments from "./CreateComments";
 import PostMenu from "./PostMenu";
 import useClickOutside from "../../helpers/ClickOutside";
 import { getReacts, reactPost } from "../../functions/Post";
+import Comment from "./Comment";
 const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
   const [reacts, setReact] = useState();
   const [check, setCheck] = useState();
   const [total, setTotal] = useState(0);
+  const [comments, setComment] = useState();
+  const [count, setCount] = useState(1);
   const [postMenuVisible, setPostMenuVisible] = useState(false);
   const menu = useRef(null);
   useClickOutside(menu, () => setPostMenuVisible(false));
   useEffect(() => {
     getPostReacts();
+  }, [post]);
+  useEffect(() => {
+    setComment(post?.comments);
   }, [post]);
   const getPostReacts = async () => {
     const res = await getReacts(post._id, user.token);
@@ -48,7 +54,9 @@ const Posts = ({ post, user, profile }) => {
       }
     }
   };
-  console.log(total);
+  const seeMore = async () => {
+    setCount((prev) => prev + 3)
+  }
   return (
     <div className="post" style={{ width: `${profile && "100%"}` }}>
       <div className="post_header">
@@ -94,11 +102,11 @@ const Posts = ({ post, user, profile }) => {
           className="post_background"
           style={{ backgroundImage: `url(${post.background})` }}
         >
-          <div className="post_bg_text">{post.text}</div>
+          <div className="post_bg_text">{post.text.slice(0, 250)} </div>
         </div>
       ) : post.type === null ? (
         <>
-          <div className="post_text">{post.text}</div>
+          <div className="post_text">{post.text.slice(0, 250)}</div>
           {post.images && post.images.length && (
             <div
               className={
@@ -150,16 +158,20 @@ const Posts = ({ post, user, profile }) => {
                 })
                 .slice(0, 3)
                 .map(
-                  (react) =>
+                  (react, i) =>
                     react.count > 0 && (
-                      <img src={`../../../reacts/${react.react}.svg`} alt="" />
+                      <img
+                        src={`../../../reacts/${react.react}.svg`}
+                        key={i}
+                        alt=""
+                      />
                     )
                 )}
           </div>
           <div className="react_count_num">{total > 0 && total}</div>
         </div>
         <div className="to_right">
-          <div className="comment_counts">14 comments</div>
+          <div className="comment_counts">{comments?.length} comments</div>
           <div className="share_count">2 share</div>
         </div>
       </div>
@@ -227,7 +239,21 @@ const Posts = ({ post, user, profile }) => {
       </div>
       <div className="comments_wrap">
         <div className="comments_order">
-          <CreateComments user={user} />
+          <CreateComments user={user} postId={post._id} setCount={setCount} setComment={setComment} />
+          {comments &&
+            comments
+              .sort((a, b) => {
+                return new Date(b.commentAt) - new Date(a.commentAt);
+              })
+              .slice(0, count)
+              .map((comment) => (
+                <Comment comment={comment} key={comment._id} />
+              ))}
+          {comments && count < comments?.length && (
+            <div className="view_comments" onClick={() => seeMore()}>
+              View more comment
+            </div>
+          )}
         </div>
       </div>
       <div ref={menu}>

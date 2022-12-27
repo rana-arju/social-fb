@@ -65,7 +65,7 @@ export const getReacts = async (postId, token) => {
     return error.response.data.message;
   }
 };
-export const comment = async (postId, comment, image, token) => {
+export const createComment = async (postId, comment, image, token) => {
   try {
     const { data } = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/comment`,

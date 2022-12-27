@@ -102,8 +102,8 @@
   height: 350px;
   width: 100%;
 }
-.post_cover_wrap img{
-   height: 100%;
+.post_cover_wrap img {
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -461,8 +461,54 @@
   object-fit: cover;
   border-radius: 5px;
 }
-.comment_emojis_picker{
+.comment_emojis_picker {
   z-index: 99;
+}
+
+.comment {
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.comment_img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.comment_image {
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.comment_wrap{
+  background: var(--bg-forth);
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+.comment_action{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  cursor: pointer;
+  margin-left: 10px;
+}
+.view_comments{
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+.view_comments:hover{
+  text-decoration: underline;
 }
 /* Comment end */
 
@@ -551,13 +597,13 @@
   .post .grid_1 img {
     height: 60% !important;
   }
-  .post_updated_picture{
+  .post_updated_picture {
     width: 350px;
     height: 350px;
   }
 }
 @media (max-width: 520px) {
-  .home_midlle{
+  .home_midlle {
     margin-left: 1.5rem;
   }
 }
@@ -583,7 +629,6 @@
     height: 60% !important;
   }
 } */
-
 
 /*------Post menu------*/
 @media (max-width: 435px) {
@@ -612,12 +657,12 @@
     width: 250px !important;
     height: 250px !important;
   }
-  .profile_update_bg{
+  .profile_update_bg {
     height: 250px;
   }
 }
 @media (max-width: 410px) {
-  .home_midlle{
+  .home_midlle {
     margin-left: 4%;
   }
 }
@@ -626,10 +671,10 @@
     width: 100%;
     margin: 0 auto;
   }
-   .home_midlle {
+  .home_midlle {
     margin-left: 1%;
   }
-  .home_midlle .createPost{
+  .home_midlle .createPost {
     width: 97%;
     margin: 10px auto;
   }
@@ -661,7 +706,8 @@
   .stories {
     grid-template-columns: repeat(6, 16vw) !important;
   }
-  .home_midlle .createPost, .home_midlle .posts{
+  .home_midlle .createPost,
+  .home_midlle .posts {
     width: 90%;
     margin: 10px 2px;
   }

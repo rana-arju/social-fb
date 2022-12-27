@@ -1,11 +1,15 @@
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import React, { useEffect, useRef, useState } from "react";
-
-const CreateComments = ({ user }) => {
+import { createComment } from "../../functions/Post";
+import { UploadImages } from "../../functions/UploadImages";
+import dataURItoBlob from "../../helpers/dataURItoBlob";
+import { ClipLoader } from "react-spinners";
+const CreateComments = ({ user, postId, setCount, setComment}) => {
   const [picker, setPicker] = useState(false);
-  const [comment, setComment] = useState("");
+  const [text, setText] = useState("");
   const [commentImage, setCommentImage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const commentRef = useRef(null);
   const imgInput = useRef(null);
   const [cursorPosition, setCursorPosition] = useState();
@@ -15,10 +19,10 @@ const CreateComments = ({ user }) => {
   const handleEmoji = ({ emoji }, e) => {
     const ref = commentRef.current;
     ref.focus();
-    const start = comment.substring(0, ref.selectionStart);
-    const end = comment.substring(ref.selectionStart);
+    const start = text.substring(0, ref.selectionStart);
+    const end = text.substring(ref.selectionStart);
     const newText = start + emoji + end;
-    setComment(newText);
+    setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
   const handleImage = (e) => {
@@ -41,6 +45,35 @@ const CreateComments = ({ user }) => {
     reader.onload = (event) => {
       setCommentImage(event.target.result);
     };
+  };
+  const handleComment = async (e) => {
+    if (e.key === "Enter") {
+      if (commentImage != "") {
+        setLoading(true);
+        const img = dataURItoBlob(commentImage);
+
+        const path = `${user.username}/post_images/${postId}`;
+        let formData = new FormData();
+        formData.append("path", path);
+        formData.append("file", img);
+
+        const image = await UploadImages(formData, path, user.token);
+        const comments = await createComment(postId, text, image[0].url, user.token);
+        setComment(comments)
+        setLoading(false);
+        setText("");
+        setCount((prev) => ++prev)
+        setCommentImage("");
+      } else {
+        setLoading(true);
+        const comments = await createComment(postId, text, "", user.token);
+     
+        setComment(comments)
+        setLoading(false);
+        setText("");
+        setCount((prev) => ++prev)
+      }
+    }
   };
   return (
     <div className="create_comment_wrap">
@@ -83,10 +116,14 @@ const CreateComments = ({ user }) => {
           <input
             type="text"
             ref={commentRef}
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             placeholder="Write a comment..."
+            onKeyUp={handleComment}
           />
+          <div className="comment_circle" style={{ marginTop: "5px" }}>
+            {loading && <ClipLoader size={20} color="#1876f2" />}
+          </div>
           <div
             className="comment_circle_icon hover2"
             onClick={() => setPicker((prev) => !prev)}
