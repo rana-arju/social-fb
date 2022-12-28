@@ -15,6 +15,8 @@ import PplYouMayKnow from "./PplYouMayKnow";
 import ProfileMenu from "./ProfileMenu";
 import ProfilePictureInfo from "./ProfilePictureInfo";
 import { useMediaQuery } from "react-responsive";
+import "react-loading-skeleton/dist/skeleton.css";
+import Skeleton from "react-loading-skeleton";
 
 import "./style.css";
 import CreatePostPopup from "../../components/createPostPopup";
@@ -118,17 +120,80 @@ const Profile = ({ getAllPosts }) => {
       <Header page="profile" getAllPosts={getAllPosts} />
       <div className="profile_top" ref={profileTop}>
         <div className="profile_container">
-          <Cover
-            cover={profile.cover}
-            visitor={visitor}
-            photos={photos.resources}
-          />
-          <ProfilePictureInfo
-            profile={profile}
-            visitor={visitor}
-            photos={photos.resources}
-            othername={othername}
-          />
+          {loading ? (
+            <>
+              <div className="profile_cover">
+                <Skeleton
+                  height="347px"
+                  containerClassName="avatar-skeleton"
+                  style={{ borderRadius: "8px" }}
+                />
+              </div>
+              <div
+                className="profile_img_wrap"
+                style={{
+                  marginBottom: "-3.2rem",
+                  transform: "translate(-8px)",
+                }}
+              >
+                <div className="profile_w_left">
+                  <Skeleton
+                    height="180px"
+                    width="180px"
+                    circle
+                    containerClassName="avatar-skeleton"
+                    style={{ transform: "translateY(-3.6rem)" }}
+                  />
+                  <div className="profile_w_col">
+                    <div className="profile_name">
+                      <Skeleton
+                        height="35px"
+                        width="200px"
+                        containerClassName="avatar-skeleton"
+                      />
+                    </div>
+                    <div className="profile_friend_count">
+                      <div className="profile_card_count">
+                        <Skeleton
+                          height="20px"
+                          width="90px"
+                          containerClassName="avatar-skeleton"
+                        />
+                      </div>
+                    </div>
+                    <div className="profile_friend_img">
+                      {Array.from(new Array(6), (val, i) => i + 1).map(
+                        (id, i) => (
+                          <Skeleton
+                            circle
+                            height="32px"
+                            width="32px"
+                            containerClassName="avatar-skeleton"
+                            style={{ transform: `translateX(${-i * 7}px)` }}
+                          />
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <Cover
+                cover={profile.cover}
+                visitor={visitor}
+                photos={photos.resources}
+              />
+              <ProfilePictureInfo
+                profile={profile}
+                visitor={visitor}
+                photos={photos.resources}
+                othername={othername}
+              />
+            </>
+          )}
+
           <ProfileMenu />
         </div>
       </div>

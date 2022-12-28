@@ -34,7 +34,6 @@ const ProfilePictureInfo = ({ profile, visitor, photos, othername }) => {
             {profile.verified && <i className="blue_tick"></i>}
           </div>
           <div className="profile_friend_count">
-            {" "}
             {profile?.friends && (
               <div className="profile_card_count">
                 {profile?.friends.length === 0
@@ -56,7 +55,6 @@ const ProfilePictureInfo = ({ profile, visitor, photos, othername }) => {
                       transform: `translateX(${-i * 7}px)`,
                       zIndex: `${i}`,
                     }}
-                
                   />
                 </Link>
               ))}
