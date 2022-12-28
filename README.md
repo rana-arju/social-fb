@@ -59,9 +59,9 @@ Branch [dev-v3-cloudinary](https://github.com/jigar-sable/instagram-mern/tree/de
 
 ## Home Page 🙈 :
 ![Home](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145494/github%20image/home_page_q7r3wj.png)
-## Home Page 🙈 :
+## Profile Page 🙈 :
 ![Profile Page](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145495/github%20image/profile_page_cssujl.png)
-
+## Other Pages 🙈 :
 <table>
   <tr>
     <td><img src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145449/github%20image/signup_zjksew.png" alt="mockup" /></td>

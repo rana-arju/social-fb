@@ -17,13 +17,21 @@ export function profileReducer(state, action) {
       return { ...state, loading: true, error: "" };
     case "PROFILE_SUCCESS":
       return { ...state, profile: action.payload, loading: false, error: "" };
+    case "PROFILE_POSTS":
+      return {
+        ...state,
+        profile: { ...state.profile, posts: action.payload },
+        loading: false,
+        error: "",
+      };
     case "PROFILE_FAILED":
       return { ...state, loading: false, error: action.payload };
 
     default:
       return state;
   }
-}export function photosReducer(state, action) {
+}
+export function photosReducer(state, action) {
   switch (action.type) {
     case "PHOTOS_REQUEST":
       return { ...state, loading: true, error: "" };

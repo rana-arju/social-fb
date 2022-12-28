@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import useClickOutside from "../../helpers/ClickOutside";
 
 const OldCover = ({ photos, setCoverPicture, setShow }) => {
-  console.log("photo", photos);
   const { user } = useSelector((state) => ({ ...state }));
   const oldCover = useRef(null);
   useClickOutside(oldCover, () => setShow(false))

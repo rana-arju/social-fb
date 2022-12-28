@@ -17,10 +17,11 @@ import ProfilePictureInfo from "./ProfilePictureInfo";
 import { useMediaQuery } from "react-responsive";
 
 import "./style.css";
-const Profile = ({ setVisible }) => {
- 
+import CreatePostPopup from "../../components/createPostPopup";
+const Profile = ({ getAllPosts }) => {
   const { username } = useParams();
   const [othername, setOthername] = useState();
+  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
   const [photos, setPhotos] = useState({});
@@ -103,10 +104,18 @@ const Profile = ({ setVisible }) => {
   const getScroll = () => {
     setScrollHeight(window.pageYOffset);
   };
-  console.log(profile);
   return (
     <div className="profile">
-      <Header page="profile" />
+      {user && visible && (
+        <CreatePostPopup
+          user={user}
+          setVisible={setVisible}
+          posts={profile?.posts}
+          dispatch={dispatch}
+          profile
+        />
+      )}
+      <Header page="profile" getAllPosts={getAllPosts} />
       <div className="profile_top" ref={profileTop}>
         <div className="profile_container">
           <Cover

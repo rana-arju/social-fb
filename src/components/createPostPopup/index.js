@@ -9,7 +9,7 @@ import { PulseLoader } from "react-spinners";
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { UploadImages } from "../../functions/UploadImages";
-const CreatePostPopup = ({ user, setVisible }) => {
+const CreatePostPopup = ({ user, setVisible, posts, dispatch, profile }) => {
   const [showPrev, setShowPrev] = useState(false);
   const [text, setText] = useState("");
   const [images, setImages] = useState([]);
@@ -32,7 +32,11 @@ const CreatePostPopup = ({ user, setVisible }) => {
         user.token
       );
       setLoading(false);
-      if (response === "ok") {
+      if (response.status === "ok") {
+        dispatch({
+          type: profile ? "PROFILE_POSTS" : "POST_SUCCESS",
+          payload: [response.data, ...posts],
+        });
         setBackground("");
         setText("");
         setVisible(false);
@@ -51,11 +55,27 @@ const CreatePostPopup = ({ user, setVisible }) => {
         formData.append("file", image);
       });
       const response = await UploadImages(formData, path, user.token);
-      await createPost(null, null, text, response, user.id, user.token);
+      const res = await createPost(
+        null,
+        null,
+        text,
+        response,
+        user.id,
+        user.token
+      );
       setLoading(false);
-      setText("");
-      setImages("");
-      setVisible(false);
+      if (res.status === "ok") {
+        dispatch({
+          type: profile ? "PROFILE_POSTS" : "POST_SUCCESS",
+          payload: [res.data, ...posts],
+        });
+
+        setText("");
+        setImages("");
+        setVisible(false);
+      } else {
+        setError(res);
+      }
     } else if (text) {
       setLoading(true);
       const response = await createPost(
@@ -67,7 +87,12 @@ const CreatePostPopup = ({ user, setVisible }) => {
         user.token
       );
       setLoading(false);
-      if (response === "ok") {
+      if (response.status === "ok") {
+        dispatch({
+          type: profile ? "PROFILE_POSTS" : "POST_SUCCESS",
+          payload: [response.data, ...posts],
+        });
+
         setBackground("");
         setText("");
         setVisible(false);

@@ -55,11 +55,16 @@ const Posts = ({ post, user, profile }) => {
     }
   };
   const seeMore = async () => {
-    setCount((prev) => prev + 3)
-  }
-  console.log("posts", post);
+    setCount((prev) => prev + 3);
+  };
+  const postRef = useRef(null);
+
   return (
-    <div className="post" style={{ width: `${profile && "100%"}` }}>
+    <div
+      className="post"
+      style={{ width: `${profile && "100%"}` }}
+      ref={postRef}
+    >
       <div className="post_header">
         <Link
           to={`/profile/${post.user.username}`}
@@ -240,7 +245,12 @@ const Posts = ({ post, user, profile }) => {
       </div>
       <div className="comments_wrap">
         <div className="comments_order">
-          <CreateComments user={user} postId={post._id} setCount={setCount} setComment={setComment} />
+          <CreateComments
+            user={user}
+            postId={post._id}
+            setCount={setCount}
+            setComment={setComment}
+          />
           {comments &&
             comments
               .sort((a, b) => {
@@ -264,6 +274,10 @@ const Posts = ({ post, user, profile }) => {
             postUserId={post.user._id}
             imageLength={post?.images?.length}
             setPostMenuVisible={setPostMenuVisible}
+            images={post?.images}
+            token={user.token}
+            id={post._id}
+            postRef={postRef}
           />
         )}
       </div>

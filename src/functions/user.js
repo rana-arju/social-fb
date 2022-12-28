@@ -32,7 +32,6 @@ export const updateProfileCover = async (url, token) => {
   }
 };
 export const addFriend = async (id, token) => {
-  console.log("id", id);
   try {
     const { data } = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/addFriend/${id}`,

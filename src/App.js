@@ -35,7 +35,6 @@ function App() {
           },
         }
       );
-      console.log("data", data);
       dispatch({
         type: "POST_SUCCESS",
         payload: data,
@@ -52,25 +51,40 @@ function App() {
   useEffect(() => {
     getAllPosts();
   }, [user]);
-  console.log("posts", posts);
   return (
     <div>
       {user && visible && (
-        <CreatePostPopup user={user} setVisible={setVisible} />
+        <CreatePostPopup
+          user={user}
+          setVisible={setVisible}
+          posts={posts}
+          dispatch={dispatch}
+        />
       )}
       <Routes>
         <Route element={<LoggedinRoute />}>
           <Route
             path="/"
-            element={<Home setVisible={setVisible} posts={posts} loading ={loading} />}
+            element={
+              <Home
+                setVisible={setVisible}
+                posts={posts}
+                loading={loading}
+                getAllPosts={getAllPosts}
+              />
+            }
           />
           <Route
             path="/profile"
-            element={<Profile setVisible={setVisible} />}
+            element={
+              <Profile setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
           />
           <Route
             path="/profile/:username"
-            element={<Profile setVisible={setVisible} />}
+            element={
+              <Profile setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
           />
           <Route path="/activate/:token" element={<Activate />} />
         </Route>

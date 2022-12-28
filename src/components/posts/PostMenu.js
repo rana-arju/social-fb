@@ -1,13 +1,34 @@
 import React, { useRef, useState } from "react";
 import useClickOutside from "../../helpers/ClickOutside";
 import MenuItem from "./MenuItem";
+import { saveAs } from "file-saver";
+import { UploadImages } from "../../functions/UploadImages";
+import { deletePost } from "../../functions/Post";
 
-const PostMenu = ({ postUserId, userId, imageLength, setPostMenuVisible }) => {
+const PostMenu = ({
+  postUserId,
+  userId,
+  imageLength,
+  setPostMenuVisible,
+  images,
+  token,
+  id,
+  postRef,
+}) => {
   const [test, setText] = useState(postUserId === userId ? true : false);
-
+  const downloadImage = () => {
+    images.map((img) => {
+      saveAs(img.url, "image.jpg");
+    });
+  };
+  const deletePostHandler = async () => {
+    const res = await deletePost(id, token);
+    if (res.status === "ok") {
+      postRef.current.remove();
+    }
+  };
   return (
-
-    <ul className="post_menu" >
+    <ul className="post_menu">
       {test && <MenuItem icon="pin_icon" title="pin post" />}
       <MenuItem
         icon="save_icon"
@@ -16,7 +37,11 @@ const PostMenu = ({ postUserId, userId, imageLength, setPostMenuVisible }) => {
       />
       {imageLength && <div className="line"></div>}
       {test && <MenuItem icon="edit_icon" title="Edit post" />}
-      {imageLength && <MenuItem icon="download_icon" title="Download" />}
+      {imageLength && (
+        <div onClick={() => downloadImage()}>
+          <MenuItem icon="download_icon" title="Download" />
+        </div>
+      )}
       {imageLength && (
         <MenuItem icon="fullscreen_icon" title="Enter fullscreen" />
       )}
@@ -41,11 +66,13 @@ const PostMenu = ({ postUserId, userId, imageLength, setPostMenuVisible }) => {
       <div className="line"></div>
       {test && <MenuItem icon="archive_icon" title="Move to archive" />}
       {test && (
-        <MenuItem
-          icon="trash_icon"
-          title="Move to trash"
-          subtitle="Items in your trash are deleted after 30 days."
-        />
+        <div onClick={() => deletePostHandler()}>
+          <MenuItem
+            icon="trash_icon"
+            title="Move to trash"
+            subtitle="Items in your trash are deleted after 30 days."
+          />
+        </div>
       )}
       {!test && (
         <MenuItem

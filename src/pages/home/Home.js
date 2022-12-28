@@ -8,7 +8,12 @@ import EmailVerificatin from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
 import Posts from "../../components/posts";
 import "./style.css";
-const Home = ({ setVisible, posts, loading }) => {
+const Home = ({
+  setVisible,
+  posts,
+  loading,
+  getAllPosts,
+}) => {
   const middle = useRef(null);
 
   const { user } = useSelector((state) => ({ ...state }));
@@ -17,11 +22,8 @@ const Home = ({ setVisible, posts, loading }) => {
     setHeight(middle.current.clientHeight);
   }, [loading]);
   return (
-    <div
-      className="home"
-      style={{ height: ` ${height + 200}px` }}
-    >
-      <Header page="home" />
+    <div className="home" style={{ height: ` ${height + 200}px` }}>
+      <Header page="home" getAllPosts={getAllPosts} />
       <LeftMenu user={user} />
       <div className="home_midlle" ref={middle}>
         <Stories user={user} />

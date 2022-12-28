@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import ProfilePicture from "../../components/profilePicture";
 import Friendship from "./Friendship";
 const ProfilePictureInfo = ({ profile, visitor, photos, othername }) => {
-  console.log("hello profile", profile);
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
   return (

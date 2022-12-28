@@ -12,7 +12,6 @@ const Bio = ({
   setShow,
   rel,
 }) => {
-  console.log("inf", infos);
   return (
     <div className="add_bio_wrap">
       {rel ? (

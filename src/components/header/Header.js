@@ -19,7 +19,7 @@ import SearchMenu from "./SearchMenu";
 import AllMenu from "./AllMenu";
 import useClickOutside from "../../helpers/ClickOutside";
 import UserMenu from "./userMenu/UserMenu";
-const Header = ({ page }) => {
+const Header = ({ page, getAllPosts }) => {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
   const [showSearchMenu, setShowSearcMenu] = useState(false);
@@ -56,7 +56,11 @@ const Header = ({ page }) => {
         <SearchMenu color={color} setShowSearcMenu={setShowSearcMenu} />
       )}
       <div className="header_middle">
-        <Link to="/" className={`middle_icon ${page === "home" && "active"}`}>
+        <Link
+          to="/"
+          className={`middle_icon ${page === "home" && "active"}`}
+          onClick={() => getAllPosts()}
+        >
           {page === "home" ? (
             <HomeActive color={color} />
           ) : (
