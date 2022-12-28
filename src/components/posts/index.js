@@ -14,6 +14,7 @@ const Posts = ({ post, user, profile }) => {
   const [reacts, setReact] = useState();
   const [check, setCheck] = useState();
   const [total, setTotal] = useState(0);
+  const [checkSaved, setCheckSaved] = useState();
   const [comments, setComment] = useState();
   const [count, setCount] = useState(1);
   const [postMenuVisible, setPostMenuVisible] = useState(false);
@@ -30,6 +31,7 @@ const Posts = ({ post, user, profile }) => {
     setReact(res.reacts);
     setCheck(res.check);
     setTotal(res.total);
+    setCheckSaved(res.checkSaved);
   };
   const reactHandler = async (type) => {
     reactPost(post._id, type, user.token);
@@ -278,6 +280,8 @@ const Posts = ({ post, user, profile }) => {
             token={user.token}
             id={post._id}
             postRef={postRef}
+            checkSaved={checkSaved}
+            setCheckSaved={setCheckSaved}
           />
         )}
       </div>

@@ -3,7 +3,7 @@ import useClickOutside from "../../helpers/ClickOutside";
 import MenuItem from "./MenuItem";
 import { saveAs } from "file-saver";
 import { UploadImages } from "../../functions/UploadImages";
-import { deletePost } from "../../functions/Post";
+import { deletePost, savePost } from "../../functions/Post";
 
 const PostMenu = ({
   postUserId,
@@ -14,6 +14,8 @@ const PostMenu = ({
   token,
   id,
   postRef,
+  setCheckSaved,
+  checkSaved,
 }) => {
   const [test, setText] = useState(postUserId === userId ? true : false);
   const downloadImage = () => {
@@ -27,14 +29,34 @@ const PostMenu = ({
       postRef.current.remove();
     }
   };
+  const saveHandler = async () => {
+    await savePost(id, token);
+    if (checkSaved) {
+      setCheckSaved(false);
+      setPostMenuVisible(false);
+    } else {
+      setCheckSaved(true);
+      setPostMenuVisible(false);
+    }
+  };
   return (
     <ul className="post_menu">
       {test && <MenuItem icon="pin_icon" title="pin post" />}
-      <MenuItem
-        icon="save_icon"
-        title="Save post"
-        subtitle="Add this to your saved items"
-      />
+      <div onClick={() => saveHandler()}>
+        {checkSaved ? (
+          <MenuItem
+            icon="save_icon"
+            title="Unsave post"
+            subtitle="Remove this from your saved items"
+          />
+        ) : (
+          <MenuItem
+            icon="save_icon"
+            title="Save post"
+            subtitle="Add this to your saved items"
+          />
+        )}
+      </div>
       {imageLength && <div className="line"></div>}
       {test && <MenuItem icon="edit_icon" title="Edit post" />}
       {imageLength && (
