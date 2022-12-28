@@ -32,6 +32,7 @@ Full-Stack facebook Clone using MERN Stack(MongoDb, express js, React js, Nodejs
 - Login using Email/Username
 - Update Profile/Password User Account
 - Infinite Scroll Posts
+- show only following user Posts on home page
 - Profile picture upload with resize
 - Cover photo upload with resize
 - Blue verified badge for authentic profile

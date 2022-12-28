@@ -8,18 +8,18 @@ import EmailVerificatin from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
 import Posts from "../../components/posts";
 import "./style.css";
-const Home = ({ setVisible, posts }) => {
+const Home = ({ setVisible, posts, loading }) => {
   const middle = useRef(null);
 
   const { user } = useSelector((state) => ({ ...state }));
   const [height, setHeight] = useState(null);
   useEffect(() => {
     setHeight(middle.current.clientHeight);
-  }, []);
+  }, [loading]);
   return (
     <div
       className="home"
-      style={!height ? { height: "100vh" } : { height: ` ${height + 200}px` }}
+      style={{ height: ` ${height + 200}px` }}
     >
       <Header page="home" />
       <LeftMenu user={user} />

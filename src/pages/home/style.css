@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-x: hidden;
+  min-height: 100vh;
 }
 .home_midlle {
   margin-top: 75px;
@@ -190,37 +191,40 @@
     width: 90% !important;
   }
 }
-@media  only screen and (max-width: 344px){
-  .stories, .createPost, .send_verification, .posts{
+@media only screen and (max-width: 344px) {
+  .stories,
+  .createPost,
+  .send_verification,
+  .posts {
     width: 90% !important;
   }
-  .posts .post{
+  .posts .post {
     width: 100% !important;
   }
-  .createPost_icon{
+  .createPost_icon {
     font-size: 10px;
   }
-  .create_post_header img{
+  .create_post_header img {
     width: 32px;
     height: 32px;
   }
-  .open_post{
+  .open_post {
     height: 30px;
   }
-  .absolute_wrap_header{
+  .absolute_wrap_header {
     font-size: 20px;
   }
-  .mmenu{
+  .mmenu {
     width: 300px;
     margin-top: 6px;
   }
-  .mmenu_col span:first-of-type{
+  .mmenu_col span:first-of-type {
     font-size: 14px;
   }
-  .mmenu_col span:last-of-type{
+  .mmenu_col span:last-of-type {
     font-size: 12px;
   }
-  .all_menu_header{
+  .all_menu_header {
     font-size: 20px;
   }
 }

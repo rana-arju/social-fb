@@ -57,6 +57,7 @@ const Posts = ({ post, user, profile }) => {
   const seeMore = async () => {
     setCount((prev) => prev + 3)
   }
+  console.log("posts", post);
   return (
     <div className="post" style={{ width: `${profile && "100%"}` }}>
       <div className="post_header">

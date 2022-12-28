@@ -1,12 +1,12 @@
 import React from "react";
 import Moment from "react-moment";
-
+import { Link } from "react-router-dom";
 const Comment = ({ comment, setCount }) => {
-  console.log("all comments", comment);
-
   return (
     <div className="comment">
-      <img src={comment?.commentBy?.picture} alt="" className="comment_img" />
+      <Link to={`/profile/${comment.commentBy.username}`}>
+        <img src={comment?.commentBy?.picture} alt="" className="comment_img" />
+      </Link>
       <div className="comment_col">
         <div className="comment_wrap">
           <div className="comment_name">
