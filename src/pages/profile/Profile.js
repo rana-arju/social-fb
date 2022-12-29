@@ -17,7 +17,7 @@ import ProfilePictureInfo from "./ProfilePictureInfo";
 import { useMediaQuery } from "react-responsive";
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "react-loading-skeleton";
-
+import { HashLoader } from "react-spinners";
 import "./style.css";
 import CreatePostPopup from "../../components/createPostPopup";
 const Profile = ({ getAllPosts }) => {
@@ -176,6 +176,30 @@ const Profile = ({ getAllPosts }) => {
                     </div>
                   </div>
                 </div>
+                <div className={`friendship ${!visitor && "flx"}`}>
+                  <Skeleton
+                    height="36px"
+                    width="120px"
+                    containerClassName="avatar-skeleton"
+                    style={{}}
+                  />
+                  <div className="flex">
+                    <Skeleton
+                      height="36px"
+                      width="120px"
+                      containerClassName="avatar-skeleton"
+                      style={{}}
+                    />
+                    {visitor && (
+                      <Skeleton
+                        height="36px"
+                        width="120px"
+                        containerClassName="avatar-skeleton"
+                        style={{}}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
             </>
           ) : (
@@ -212,13 +236,48 @@ const Profile = ({ getAllPosts }) => {
               }`}
             >
               <div className="profile_left" ref={leftSide}>
-                <ProfileIntro
-                  detailss={profile.details}
-                  visitor={visitor}
-                  setOthername={setOthername}
-                />
-                <Photos photos={photos} />
-                <Friends friends={profile.friends} />
+                {loading ? (
+                  <>
+                    <div className="profile_card">
+                      <div className="profile_card_header">Intro</div>
+                      <div className="skeleton_loader">
+                        <HashLoader color="#1876f2" />
+                      </div>
+                    </div>
+                    <div className="profile_card">
+                      <div className="profile_card_header">
+                        Photos
+                        <div className="profile_header_link">
+                          See all photos
+                        </div>
+                      </div>
+                      <div className="skeleton_loader">
+                        <HashLoader color="#1876f2" />
+                      </div>
+                    </div>
+                    <div className="profile_card">
+                      <div className="profile_card_header">
+                        Friends
+                        <div className="profile_header_link">
+                          See all friends
+                        </div>
+                      </div>
+                      <div className="skeleton_loader">
+                        <HashLoader color="#1876f2" />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <ProfileIntro
+                      detailss={profile.details}
+                      visitor={visitor}
+                      setOthername={setOthername}
+                    />
+                    <Photos photos={photos} />
+                    <Friends friends={profile.friends} />
+                  </>
+                )}
                 <div className="relative_fb_copyright">
                   <Link to="/">Privacy </Link>
                   <span>. </span>
@@ -243,12 +302,65 @@ const Profile = ({ getAllPosts }) => {
                 )}
                 <GridPosts />
                 <div className="posts">
-                  {profile.posts && profile.posts.length ? (
-                    profile.posts.map((post) => (
-                      <Posts post={post} user={user} key={post._id} profile />
-                    ))
-                  ) : (
-                    <div className="no_posts">No posts available</div>
+                  {loading ? (Array.from(new Array(3), (val, i) => i + 1).map(
+                        (id, i) => (
+                    <div className="post" style={{width: "auto"}}>
+                      <div className="post_header">
+                        <div className="post_header_left">
+                          <Skeleton
+                            circle
+                            height="40px"
+                            width="40px"
+                            containerClassName="avatar-skeleton"
+                            style={{}}
+                          />
+                          <div className="header_col">
+                            <div className="post_profile_name">
+                              <Skeleton
+                                height="25px"
+                                width="180px"
+                                containerClassName="avatar-skeleton"
+                                style={{}}
+                              />
+                            </div>
+                            <div className="post_profile_privacy_date">
+                              <Skeleton
+                                height="20px"
+                                width="120px"
+                                containerClassName="avatar-skeleton"
+                                style={{}}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <Skeleton
+                            height="20px"
+                            width="45px"
+                            containerClassName="avatar-skeleton"
+                            style={{}}
+                          />
+                        </div>
+                      </div>
+                      <div className="post_text">
+                        <Skeleton count={5} width="100%" />
+                      </div>
+                    </div>)
+                  )) : (
+                    <>
+                      {profile.posts && profile.posts.length ? (
+                        profile.posts.map((post) => (
+                          <Posts
+                            post={post}
+                            user={user}
+                            key={post._id}
+                            profile
+                          />
+                        ))
+                      ) : (
+                        <div className="no_posts">No posts available</div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

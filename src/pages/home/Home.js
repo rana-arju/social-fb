@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import CreatePost from "../../components/createPost";
 import Header from "../../components/header/Header";
@@ -30,10 +31,59 @@ const Home = ({
         {/* {user.verified === false && <EmailVerificatin user={user} />} */}
         <CreatePost user={user} setVisible={setVisible} />
         <div className="posts">
-          {posts &&
-            posts.map((post) => (
-              <Posts post={post} key={post._id} user={user} />
-            ))}
+          {loading ? (
+            Array.from(new Array(3), (val, i) => i + 1).map((id, i) => (
+              <div className="post" style={{ width: "auto" }}>
+                <div className="post_header">
+                  <div className="post_header_left">
+                    <Skeleton
+                      circle
+                      height="40px"
+                      width="40px"
+                      containerClassName="avatar-skeleton"
+                      style={{}}
+                    />
+                    <div className="header_col">
+                      <div className="post_profile_name">
+                        <Skeleton
+                          height="25px"
+                          width="180px"
+                          containerClassName="avatar-skeleton"
+                          style={{}}
+                        />
+                      </div>
+                      <div className="post_profile_privacy_date">
+                        <Skeleton
+                          height="20px"
+                          width="120px"
+                          containerClassName="avatar-skeleton"
+                          style={{}}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <Skeleton
+                      height="20px"
+                      width="45px"
+                      containerClassName="avatar-skeleton"
+                      style={{}}
+                    />
+                  </div>
+                </div>
+                <div className="post_text">
+                  <Skeleton count={5} width="100%" />
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              {posts &&
+                posts.map((post) => (
+                  <Posts post={post} key={post._id} user={user} />
+                ))}
+            </>
+          )}
         </div>
       </div>
       <RightMenu user={user} />
