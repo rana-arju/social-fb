@@ -84,7 +84,7 @@ function App() {
           <Route
             path="/friends"
             element={
-              <Friend user={user}  />
+              <Friend   />
             }
           />
           <Route

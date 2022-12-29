@@ -1,10 +1,13 @@
 import React, { useEffect, useReducer, useState } from "react";
+import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import { friendsPage } from "../../functions/reducers";
 import { getAllFriendRequests } from "../../functions/user";
 import Card from "./Card";
 import "./style.css";
-const Friend = ({ user }) => {
+const Friend = () => {
+    const { user } = useSelector((state) => ({ ...state }));
+
   const [{ loading, error, data }, dispatch] = useReducer(friendsPage, {
     loading: false,
     error: "",
@@ -115,7 +118,7 @@ const Friend = ({ user }) => {
             <div className="flex_wrap">
               {data.friends &&
                 data.friends.map((user) => (
-                  <Card user={user} key={user._id} type="request" />
+                  <Card userr={user} key={user._id} getData={getData} type="request" />
                 ))}
             </div>
           </div>
@@ -127,7 +130,7 @@ const Friend = ({ user }) => {
             <div className="flex_wrap">
               {data.sentRequest &&
                 data.sentRequest.map((user) => (
-                  <Card user={user} key={user._id} type="sent" />
+                  <Card userr={user} key={user._id} getData={getData} type="sent" />
                 ))}
             </div>
           </div>
@@ -151,7 +154,7 @@ const Friend = ({ user }) => {
             <div className="flex_wrap">
               {data.friends &&
                 data.friends.map((user) => (
-                  <Card user={user} key={user._id} type="friend" />
+                  <Card userr={user} key={user._id} getData={getData} type="friend" />
                 ))}
             </div>
           </div>
