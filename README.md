@@ -45,17 +45,11 @@ Full-Stack facebook Clone using MERN Stack(MongoDb, express js, React js, Nodejs
 - Save/Unsave Post
 - Visit User Profiles
 - Add user bio and user details info
-<!-- - Share New Post -->
 - Skeleton Loaders
 - Delete Own Posts
-<!-- - Search Users to Chat -->
 - Add New Chat
-<!-- - Message Users
-- Typing | Online User Status -->
 - See Followers/Following, friend of Users
 - Emoji Enabled (Emoji Mart)
-
-Branch [dev-v3-cloudinary](https://github.com/jigar-sable/instagram-mern/tree/dev-v3-cloudinary) uses Cloudinary to store images.
 
 ## Home Page 🙈 :
 ![Home](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145494/github%20image/home_page_q7r3wj.png)
