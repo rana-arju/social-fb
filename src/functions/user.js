@@ -51,7 +51,8 @@ export const addFriend = async (id, token) => {
 export const cancelRequest = async (id, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/cancelRequest/${id}`,{},
+      `${process.env.REACT_APP_BACKEND_URL}/cancelRequest/${id}`,
+      {},
 
       {
         headers: {
@@ -67,7 +68,8 @@ export const cancelRequest = async (id, token) => {
 export const follow = async (id, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/follow/${id}`,{},
+      `${process.env.REACT_APP_BACKEND_URL}/follow/${id}`,
+      {},
 
       {
         headers: {
@@ -83,7 +85,8 @@ export const follow = async (id, token) => {
 export const unFollow = async (id, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/unFollow/${id}`,{},
+      `${process.env.REACT_APP_BACKEND_URL}/unFollow/${id}`,
+      {},
 
       {
         headers: {
@@ -99,7 +102,8 @@ export const unFollow = async (id, token) => {
 export const acceptRequest = async (id, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/acceptRequest/${id}`,{},
+      `${process.env.REACT_APP_BACKEND_URL}/acceptRequest/${id}`,
+      {},
 
       {
         headers: {
@@ -115,7 +119,8 @@ export const acceptRequest = async (id, token) => {
 export const unfriend = async (id, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/unfriend/${id}`,{},
+      `${process.env.REACT_APP_BACKEND_URL}/unfriend/${id}`,
+      {},
 
       {
         headers: {
@@ -131,7 +136,8 @@ export const unfriend = async (id, token) => {
 export const deleteRequest = async (id, token) => {
   try {
     const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/deleteRequest/${id}`,{},
+      `${process.env.REACT_APP_BACKEND_URL}/deleteRequest/${id}`,
+      {},
 
       {
         headers: {
@@ -156,6 +162,24 @@ export const searchUser = async (searchTerm, token) => {
         },
       }
     );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+export const searchHistory = async (searchUserId, token) => {
+  try {
+    const { data } = await axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/addToSearchHistory`,
+      { searchUserId },
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(data)
     return data;
   } catch (error) {
     return error.response.data.message;

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { searchUser } from "../../functions/user";
+import { searchHistory, searchUser } from "../../functions/user";
 import useClickOutside from "../../helpers/ClickOutside";
 import { Return, Search } from "../../svg";
 
@@ -24,7 +24,13 @@ const SearchMenu = ({ color, setShowSearcMenu, token }) => {
       setResults(res);
     }
   };
-  console.log(results);
+  const addToSearchHistory = async (searchUserId) => {
+    const res = await searchHistory(searchUserId, token);
+    console.log(res);
+    if (res.status === "ok") {
+      setShowSearcMenu(false);
+    }
+  };
   return (
     <div className="header_left search_area scrollbar" ref={menu}>
       <div className="search_wrap">
@@ -71,7 +77,12 @@ const SearchMenu = ({ color, setShowSearcMenu, token }) => {
       <div className="search_results scrollbar">
         {results &&
           results.map((user) => (
-            <Link to={`/profile/${user.username}`} className="search_user hover1" onClick={() => setShowSearcMenu(false)} key={user._id}>
+            <Link
+              to={`/profile/${user.username}`}
+              className="search_user hover1"
+              onClick={() => addToSearchHistory(user._id)}
+              key={user._id}
+            >
               <img src={user.picture} alt="" />
               <span>
                 {user.first_name} {user.first_name}

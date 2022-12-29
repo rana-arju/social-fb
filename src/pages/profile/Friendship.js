@@ -182,7 +182,7 @@ const Friendship = ({ friendshipp, id }) => {
           <img
             src="../../../icons/message.png"
             alt=""
-            className={friendship?.friends && "invert"}
+            className={friendship?.friends ? "invert" : ""}
           />
           <span>Message</span>
         </button>
