@@ -167,7 +167,7 @@ export const searchUser = async (searchTerm, token) => {
     return error.response.data.message;
   }
 };
-export const searchHistory = async (searchUserId, token) => {
+export const addsearchHistory = async (searchUserId, token) => {
   try {
     const { data } = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/addToSearchHistory`,
@@ -179,7 +179,44 @@ export const searchHistory = async (searchUserId, token) => {
         },
       }
     );
-    console.log(data)
+    console.log(data);
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+export const getSearchHistory = async (token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/getToSearchHistory`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(data);
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+export const deletesearchHistory = async (searchUser, token) => {
+  try {
+    const { data } = await axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/deleteSearchHistory`,
+      {
+        searchUser,
+      },
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(data);
     return data;
   } catch (error) {
     return error.response.data.message;

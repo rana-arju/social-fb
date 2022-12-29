@@ -466,7 +466,7 @@ header {
 
 /*-------User menu----*/
 /* user search result */
-.search_results{
+.search_results, .search_history{
   width: 100%;
   max-height: 70vh;
   overflow-y: auto;
@@ -478,6 +478,7 @@ header {
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  margin-bottom: 10px;
 
 }
 .search_user img{
@@ -489,6 +490,11 @@ object-fit: cover;
 .search_user span{
   font-weight: 600;
   font-size: 14px;
+}
+.search_user i{
+  position: absolute;
+  right: 10px;
+  transform: scale(0.7);
 }
 /* user search result */
 
