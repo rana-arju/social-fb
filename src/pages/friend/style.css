@@ -1,0 +1,39 @@
+.friends{
+    height: calc(100vh - 56px);
+    margin-top: 56px;
+    width: 100%;
+    display: grid;
+    color: var(--color-primary);
+}
+.friends_left{
+    position: fixed;
+    background: var(--bg-primary);
+    box-shadow: 0 12px 12px var(--shadow-1);
+    padding: 10px;
+    width: 360px;
+    height: 100%;
+}
+.friends_right{
+    position: absolute;
+    left: 360px;
+    top: 56px;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 360px);
+}
+.friends_left_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.friends_left_header h2{
+    font-size: 21px;
+}
+.friends_left .mmenu_item{
+    cursor: pointer;
+}
+.active_friends{
+background-color: var(--bg-secondary);
+}

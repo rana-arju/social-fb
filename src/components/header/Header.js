@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   Friends,
+  FriendsActive,
   Gaming,
   Home,
   HomeActive,
@@ -53,7 +54,11 @@ const Header = ({ page, getAllPosts }) => {
         </div>
       </div>
       {showSearchMenu && (
-        <SearchMenu color={color} setShowSearcMenu={setShowSearcMenu} token={user.token} />
+        <SearchMenu
+          color={color}
+          setShowSearcMenu={setShowSearcMenu}
+          token={user.token}
+        />
       )}
       <div className="header_middle">
         <Link
@@ -67,8 +72,15 @@ const Header = ({ page, getAllPosts }) => {
             <Home color={color} />
           )}
         </Link>
-        <Link to="/" className="middle_icon hover1">
-          <Friends color={color} />
+        <Link
+          to="/friends"
+          className={`middle_icon ${page === "friends" && "active"}`}
+        >
+          {page === "friends" ? (
+            <FriendsActive color={color} />
+          ) : (
+            <Friends color={color} />
+          )}
         </Link>
         <Link to="/" className="middle_icon hover1">
           <Watch color={color} />

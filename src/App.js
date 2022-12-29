@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CreatePostPopup from "./components/createPostPopup";
 import { postReducer } from "./functions/reducers";
+import Friend from "./pages/friend";
 import Activate from "./pages/home/Activate";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -78,6 +79,12 @@ function App() {
             path="/profile"
             element={
               <Profile setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
+          /> 
+          <Route
+            path="/friends"
+            element={
+              <Friend  />
             }
           />
           <Route
