@@ -170,6 +170,7 @@ const Profile = ({ getAllPosts }) => {
                             width="32px"
                             containerClassName="avatar-skeleton"
                             style={{ transform: `translateX(${-i * 7}px)` }}
+                            key={i}
                           />
                         )
                       )}
@@ -304,7 +305,7 @@ const Profile = ({ getAllPosts }) => {
                 <div className="posts">
                   {loading ? (Array.from(new Array(3), (val, i) => i + 1).map(
                         (id, i) => (
-                    <div className="post" style={{width: "auto"}}>
+                    <div className="post" style={{width: "auto"}} key={i}>
                       <div className="post_header">
                         <div className="post_header_left">
                           <Skeleton

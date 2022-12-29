@@ -22,6 +22,7 @@ const PostMenu = ({
     images.map((img) => {
       saveAs(img.url, "image.jpg");
     });
+    setPostMenuVisible(false)
   };
   const deletePostHandler = async () => {
     const res = await deletePost(id, token);

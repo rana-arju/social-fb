@@ -33,7 +33,7 @@ const Home = ({
         <div className="posts">
           {loading ? (
             Array.from(new Array(3), (val, i) => i + 1).map((id, i) => (
-              <div className="post" style={{ width: "auto" }}>
+              <div className="post" style={{ width: "auto" }} key={i}>
                 <div className="post_header">
                   <div className="post_header_left">
                     <Skeleton

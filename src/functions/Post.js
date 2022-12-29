@@ -24,7 +24,7 @@ export const createPost = async (
       }
     );
     console.log("post", data);
-    return {status: "ok", data};
+    return { status: "ok", data };
   } catch (error) {
     return error.response.data.message;
   }
@@ -103,7 +103,7 @@ export const savePost = async (id, token) => {
     return error.response.data.message;
   }
 };
-export const deletePost = async (id,  token) => {
+export const deletePost = async (id, token) => {
   try {
     const { data } = await axios.delete(
       `${process.env.REACT_APP_BACKEND_URL}/postDelete/${id}`,

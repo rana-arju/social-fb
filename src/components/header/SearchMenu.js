@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { searchUser } from "../../functions/user";
 import useClickOutside from "../../helpers/ClickOutside";
 import { Return, Search } from "../../svg";
 
-const SearchMenu = ({ color, setShowSearcMenu }) => {
+const SearchMenu = ({ color, setShowSearcMenu, token }) => {
+  const [searchTerm, setSearchTerm] = useState([]);
+  const [results, setResults] = useState([]);
   const menu = useRef(null);
   const input = useRef(null);
   const [iconVisible, setIconVisible] = useState(true);
@@ -12,6 +16,15 @@ const SearchMenu = ({ color, setShowSearcMenu }) => {
   useEffect(() => {
     input.current.focus();
   }, []);
+  const searchHandler = async () => {
+    if (searchTerm === "") {
+      setResults("");
+    } else {
+      const res = await searchUser(searchTerm, token);
+      setResults(res);
+    }
+  };
+  console.log(results);
   return (
     <div className="header_left search_area scrollbar" ref={menu}>
       <div className="search_wrap">
@@ -38,12 +51,15 @@ const SearchMenu = ({ color, setShowSearcMenu }) => {
             type="text"
             placeholder="Search Facebook"
             ref={input}
+            value={searchTerm}
             onFocus={() => {
               setIconVisible(false);
             }}
             onBlur={() => {
               setIconVisible(true);
             }}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyUp={searchHandler}
           />
         </div>
       </div>
@@ -52,7 +68,17 @@ const SearchMenu = ({ color, setShowSearcMenu }) => {
         <a href="/">Edit</a>
       </div>
       <div className="search_history"></div>
-      <div className="search_results scrollbar"></div>
+      <div className="search_results scrollbar">
+        {results &&
+          results.map((user) => (
+            <Link to={`/profile/${user.username}`} className="search_user hover1" onClick={() => setShowSearcMenu(false)} key={user._id}>
+              <img src={user.picture} alt="" />
+              <span>
+                {user.first_name} {user.first_name}
+              </span>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 };

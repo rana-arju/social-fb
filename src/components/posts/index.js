@@ -41,6 +41,7 @@ const Posts = ({ post, user, profile }) => {
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = --reacts[index].count)]);
         setTotal((prev) => --prev);
+        setVisible(false);
       }
     } else {
       setCheck(type);
@@ -49,12 +50,15 @@ const Posts = ({ post, user, profile }) => {
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
+        setVisible(false);
       }
       if (index1 !== -1) {
         setReact([...reacts, (reacts[index1].count = --reacts[index1].count)]);
         setTotal((prev) => --prev);
+        setVisible(false);
       }
     }
+    // setVisible(false);
   };
   const seeMore = async () => {
     setCount((prev) => prev + 3);
