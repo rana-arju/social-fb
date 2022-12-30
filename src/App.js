@@ -15,7 +15,7 @@ import LoggedinRoute from "./routes/LoggedinRoute";
 import NotLoggedin from "./routes/NotLoggedin";
 
 function App() {
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, darkTheme } = useSelector((state) => ({ ...state }));
   const [visible, setVisible] = useState(false);
   const [{ loading, error, posts }, dispatch] = useReducer(postReducer, {
     loading: false,
@@ -53,7 +53,7 @@ function App() {
     getAllPosts();
   }, [user]);
   return (
-    <div className="dark">
+    <div className={`${darkTheme && "dark"}`}>
       {user && visible && (
         <CreatePostPopup
           user={user}

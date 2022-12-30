@@ -36,7 +36,7 @@ const PasswordVerification = ({
         email,
         password
       });
-      setVisiable(3);
+      setVisiable(2);
       setError("");
       setLoading(false);
       navigate("/")

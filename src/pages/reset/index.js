@@ -71,7 +71,7 @@ const ResetPass = () => {
             email={email}
           />
         )}
-        {visiable === 2 && (
+        {/* {visiable === 2 && (
           <CodeVerification
             code={code}
             setCode={setCode}
@@ -82,8 +82,8 @@ const ResetPass = () => {
             setVisiable={setVisiable}
             userInfo={userInfo}
           />
-        )}
-        {visiable === 3 && (
+        )} */}
+        {visiable === 2 && (
           <PasswordVerification
             password={password}
             setPassword={setPassword}

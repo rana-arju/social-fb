@@ -317,7 +317,7 @@
   height: 100%;
   cursor: pointer;
 }
-.profile_photo_card:hover{
+.profile_photo_card:hover {
   filter: brightness(110%);
 }
 .profile_photo_card img {
@@ -338,6 +338,9 @@
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 }
+/* .friend_menu_wrap{
+  position: relative;
+} */
 .save_changes_cover {
   z-index: 9999;
   position: fixed;
@@ -424,17 +427,17 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.profile_friend_img img:hover{
+.profile_friend_img img:hover {
   filter: brightness(110%);
 }
-.flx{
+.flx {
   flex-direction: row !important;
 }
-.react-loading-skeleton{
-      --base-color: #ccc !important;
-    --highlight-color: #ddd !important;
+.react-loading-skeleton {
+  --base-color: #ccc !important;
+  --highlight-color: #ddd !important;
 }
-.skeleton_loader{
+.skeleton_loader {
   height: 100px;
   width: 100%;
   display: grid;
@@ -576,10 +579,10 @@
   .othername {
     font-size: 16px;
   }
-  .profile_friend_count{
+  .profile_friend_count {
     transform: translateY(-2px);
   }
-  .profile_friend_img{
+  .profile_friend_img {
     transform: translateY(-2px);
   }
 }
@@ -587,6 +590,9 @@
   .friendship {
     flex-direction: column;
     align-items: center;
+  }
+  .open_cover_menu {
+    width: 250px;
   }
 }
 @media (max-width: 356px) {

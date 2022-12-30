@@ -47,16 +47,20 @@ const SendEmail = ({
           <span>Facebook user</span>
         </div>
       </div>
-      {
-        error && <div className="error_text" style={{paddingLeft: "10px"}}>
+      {error && (
+        <div className="error_text" style={{ paddingLeft: "10px" }}>
           {error}
         </div>
-      }
+      )}
       <div className="reset_form_btns">
         <Link to="/login" className="gray_btn">
           Not You ?
         </Link>
-        <button type="submit" className="blue_btn" onClick={() => sendEmail()}>
+        <button
+          type="submit"
+          className="blue_btn"
+          onClick={() => setVisiable(2)}
+        >
           Continue
         </button>
       </div>

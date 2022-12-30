@@ -59,7 +59,7 @@ const UpdateProfilePicture = ({ setImage, image, setError, setShow, pRef }) => {
 
       const update_picture = await updateProfilepicture(
         res[0].url,
-       
+
         user.token
       );
       if (update_picture === "ok") {
@@ -82,6 +82,8 @@ const UpdateProfilePicture = ({ setImage, image, setError, setShow, pRef }) => {
               picture: res[0].url,
             })
           );
+     
+
           dispatch({
             type: "UPDATEPICTURE",
             payload: res[0].url,

@@ -1,6 +1,11 @@
 import React from "react";
+import Cookies from "js-cookie";
 
+import { useDispatch, useSelector } from "react-redux";
 const DisplayAccessibility = ({ setVisible }) => {
+  const { darkTheme } = useSelector((state) => ({ ...state }));
+
+  const dispatch = useDispatch();
   return (
     <div className="absolute_wrap">
       <div className="absolute_wrap_header">
@@ -21,13 +26,35 @@ const DisplayAccessibility = ({ setVisible }) => {
           </span>
         </div>
       </div>
-      <label for="darkoff" className="hover1">
+      <label
+        htmlFor="darkoff"
+        className="hover1"
+        onClick={() => {
+          Cookies.set("darkTheme", false);
+          dispatch({ type: "LIGHT" });
+        }}
+      >
         <span>Off</span>
-        <input type="radio" name="dark" id="darkoff" />
+        {darkTheme ? (
+          <input type="radio" name="dark" id="darkoff" />
+        ) : (
+          <input type="radio" name="dark" id="darkoff" checked />
+        )}
       </label>
-      <label for="darkon" className="hover1">
+      <label
+        htmlFor="darkon"
+        className="hover1"
+        onClick={() => {
+          Cookies.set("darkTheme", true);
+          dispatch({ type: "DARK" });
+        }}
+      >
         <span>On</span>
-        <input type="radio" name="dark" id="darkon" />
+        {darkTheme ? (
+          <input type="radio" name="dark" id="darkon" checked />
+        ) : (
+          <input type="radio" name="dark" id="darkon"  />
+        )}
       </label>{" "}
       <div className="mmenu_main">
         <div className="small_circle" style={{ width: "50px" }}>
@@ -40,11 +67,11 @@ const DisplayAccessibility = ({ setVisible }) => {
           </span>
         </div>
       </div>
-      <label for="compactOff" className="hover1">
+      <label htmlFor="compactOff" className="hover1">
         <span>Off</span>
         <input type="radio" name="compact" id="compactOff" />
       </label>
-      <label for="compacton" className="hover1">
+      <label htmlFor="compacton" className="hover1">
         <span>On</span>
         <input type="radio" name="compact" id="compacton" />
       </label>

@@ -47,7 +47,14 @@
 .dark .absolute_wrap_header i,
 .dark .post_menu i,
 .dark .post_menu img,
-.dark .comment_circle_icon i, .dark .search  svg {
+.dark .comment_circle_icon i,
+.dark .search svg,
+.dark .profile_circle i,
+.dark .p10_dots svg,
+.dark .post_header_right svg,
+.dark .gray_btn i,
+.dark .open_cover_menu_item i,
+.dark .friendship button img, .dark .open_cover_menu_item img, .dark .flex_p_t i, .dark .slider i {
   filter: invert(100%);
 }
 
@@ -61,6 +68,13 @@
 .dark .emoji_icon_large:hover {
   filter: invert(0);
 }
-.dark .add_pics_wrap i{
-filter: invert(100%);
+.dark .add_pics_wrap i {
+  filter: invert(100%);
+}
+.dark .gray_btn {
+  background: var(--bg-third);
+  color: var(--color-primary);
+}
+.dark .gray_btn:hover {
+  background: #777;
 }
