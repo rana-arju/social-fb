@@ -86,6 +86,12 @@ function App() {
             element={
               <Friend   />
             }
+          /> 
+          <Route
+            path="/friends/:type"
+            element={
+              <Friend  />
+            }
           />
           <Route
             path="/profile/:username"

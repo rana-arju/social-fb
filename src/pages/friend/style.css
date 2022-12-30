@@ -37,6 +37,15 @@
 .active_friends {
   background-color: var(--bg-secondary);
 }
+.active_friends .small_circle {
+  background: #1876f2;
+}
+.active_friends i {
+  filter: invert(100%);
+}
+.active_friends .rArrow {
+  display: none;
+}
 .see_link {
   color: var(--blue-color);
   padding: 5px;
@@ -94,7 +103,7 @@
     width: calc(100% - 280px);
   }
 }
-@media (max-width: 886px) {
+@media (max-width: 900px) {
   .req_card button {
     width: 130px !important;
   }
@@ -130,6 +139,9 @@
   .friends_right_wrap .flex_wrap {
     grid-template-columns: repeat(1, 1fr);
   }
+   .req_card button {
+    width: 180px !important;
+  }
 }
 @media (max-width: 400px) {
   .friends_right {
@@ -141,5 +153,15 @@
   }
   .req_card button {
     width: 180px !important;
+  }
+  .friends_left_wrap .rArrow {
+    display: none;
+  }
+  .friends_left {
+    width: 80px;
+  }
+  .friends_right {
+    left: 80px;
+    width: calc(100% - 80px);
   }
 }
