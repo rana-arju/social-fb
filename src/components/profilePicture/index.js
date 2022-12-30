@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import useClickOutside from "../../helpers/ClickOutside";
 import "./style.css";
 import UpdateProfilePicture from "./UpdateProfilePicture";
 const ProfilePicture = ({ setShow, pRef, photos }) => {

@@ -22,6 +22,7 @@ import useClickOutside from "../../helpers/ClickOutside";
 import UserMenu from "./userMenu/UserMenu";
 const Header = ({ page, getAllPosts }) => {
   const { user } = useSelector((user) => ({ ...user }));
+  console.log("user", user);
   const color = "#65676b";
   const [showSearchMenu, setShowSearcMenu] = useState(false);
   const [showAllMenu, setShowAllMenu] = useState(false);

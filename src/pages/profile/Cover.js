@@ -81,10 +81,9 @@ const Cover = ({ cover, visitor, photos }) => {
       formData.append("file", blob);
       formData.append("path", path);
       const res = await UploadImages(formData, path, user.token);
-
+      console.log("res", res);
       const update_picture = await updateProfileCover(
         res[0].url,
-      
         user.token
       );
       if (update_picture === "ok") {
@@ -96,7 +95,8 @@ const Cover = ({ cover, visitor, photos }) => {
           user.id,
           user.token
         );
-        if (new_post === "ok") {
+        console.log("new post", new_post);
+        if (new_post.status === "ok") {
           setLoading(false);
           setCoverPicture("");
           cRef.current.src = res[0].url;
@@ -189,7 +189,10 @@ const Cover = ({ cover, visitor, photos }) => {
           </div>
           {showCoverMneu && (
             <div className="open_cover_menu" ref={menuRef}>
-              <div className="open_cover_menu_item hover1" onClick={() => setShow(true)}>
+              <div
+                className="open_cover_menu_item hover1"
+                onClick={() => setShow(true)}
+              >
                 <i className="photo_icon"></i>
                 Select Photo
               </div>
