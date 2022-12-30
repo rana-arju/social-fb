@@ -11,6 +11,7 @@ import { getReacts, reactPost } from "../../functions/Post";
 import Comment from "./Comment";
 const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
+  const [reactMenu, setReactMenu] = useState(false);
   const [reacts, setReact] = useState();
   const [check, setCheck] = useState();
   const [total, setTotal] = useState(0);
@@ -64,6 +65,8 @@ const Posts = ({ post, user, profile }) => {
     setCount((prev) => prev + 3);
   };
   const postRef = useRef(null);
+  const reactRef = useRef(null)
+  useClickOutside(reactRef, () => setVisible(false));
 
   return (
     <div
@@ -192,6 +195,7 @@ const Posts = ({ post, user, profile }) => {
           visible={visible}
           setVisible={setVisible}
           reactHandler={reactHandler}
+          reactRef={reactRef}
         />
         <div
           className="post_action hover1"

@@ -30,13 +30,11 @@ const reactsArray = [
     image: "../../../reacts/angry.gif",
   },
 ];
-const ReactsPopup = ({ visible, setVisible, reactHandler}) => {
-  const { user } = useSelector((state) => ({ ...state }));
-
+const ReactsPopup = ({ visible, setVisible, reactHandler, reactRef }) => {
   return (
     <>
       {visible && (
-        <div
+        <div ref={reactRef}
           className="reacts_popup"
           onMouseOver={() =>
             setTimeout(() => {
