@@ -9,7 +9,6 @@ import "./style.css";
 const Friend = () => {
   const { user } = useSelector((state) => ({ ...state }));
   const { type } = useParams();
-  console.log(type);
   const [{ loading, error, data }, dispatch] = useReducer(friendsPage, {
     loading: false,
     error: "",
@@ -28,6 +27,7 @@ const Friend = () => {
       dispatch({ type: "FRIENDS_FAILED", payload: res.data });
     }
   };
+
   return (
     <>
       <Header page="friends" />
@@ -146,8 +146,8 @@ const Friend = () => {
                 )}
               </div>
               <div className="flex_wrap">
-                {data.friends &&
-                  data.friends.map((user) => (
+                {data.requests &&
+                  data.requests.map((user) => (
                     <Card
                       userr={user}
                       key={user._id}

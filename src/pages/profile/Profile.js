@@ -259,9 +259,9 @@ const Profile = ({ getAllPosts }) => {
                     <div className="profile_card">
                       <div className="profile_card_header">
                         Friends
-                        <div className="profile_header_link">
+                        <Link to="/friends/all" className="profile_header_link">
                           See all friends
-                        </div>
+                        </Link>
                       </div>
                       <div className="skeleton_loader">
                         <HashLoader color="#1876f2" />
@@ -303,51 +303,52 @@ const Profile = ({ getAllPosts }) => {
                 )}
                 <GridPosts />
                 <div className="posts">
-                  {loading ? (Array.from(new Array(3), (val, i) => i + 1).map(
-                        (id, i) => (
-                    <div className="post" style={{width: "auto"}} key={i}>
-                      <div className="post_header">
-                        <div className="post_header_left">
-                          <Skeleton
-                            circle
-                            height="40px"
-                            width="40px"
-                            containerClassName="avatar-skeleton"
-                            style={{}}
-                          />
-                          <div className="header_col">
-                            <div className="post_profile_name">
-                              <Skeleton
-                                height="25px"
-                                width="180px"
-                                containerClassName="avatar-skeleton"
-                                style={{}}
-                              />
-                            </div>
-                            <div className="post_profile_privacy_date">
-                              <Skeleton
-                                height="20px"
-                                width="120px"
-                                containerClassName="avatar-skeleton"
-                                style={{}}
-                              />
+                  {loading ? (
+                    Array.from(new Array(3), (val, i) => i + 1).map((id, i) => (
+                      <div className="post" style={{ width: "auto" }} key={i}>
+                        <div className="post_header">
+                          <div className="post_header_left">
+                            <Skeleton
+                              circle
+                              height="40px"
+                              width="40px"
+                              containerClassName="avatar-skeleton"
+                              style={{}}
+                            />
+                            <div className="header_col">
+                              <div className="post_profile_name">
+                                <Skeleton
+                                  height="25px"
+                                  width="180px"
+                                  containerClassName="avatar-skeleton"
+                                  style={{}}
+                                />
+                              </div>
+                              <div className="post_profile_privacy_date">
+                                <Skeleton
+                                  height="20px"
+                                  width="120px"
+                                  containerClassName="avatar-skeleton"
+                                  style={{}}
+                                />
+                              </div>
                             </div>
                           </div>
+                          <div>
+                            <Skeleton
+                              height="20px"
+                              width="45px"
+                              containerClassName="avatar-skeleton"
+                              style={{}}
+                            />
+                          </div>
                         </div>
-                        <div>
-                          <Skeleton
-                            height="20px"
-                            width="45px"
-                            containerClassName="avatar-skeleton"
-                            style={{}}
-                          />
+                        <div className="post_text">
+                          <Skeleton count={5} width="100%" />
                         </div>
                       </div>
-                      <div className="post_text">
-                        <Skeleton count={5} width="100%" />
-                      </div>
-                    </div>)
-                  )) : (
+                    ))
+                  ) : (
                     <>
                       {profile.posts && profile.posts.length ? (
                         profile.posts.map((post) => (

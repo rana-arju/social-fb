@@ -179,7 +179,6 @@ export const addsearchHistory = async (searchUserId, token) => {
         },
       }
     );
-    console.log(data);
     return data;
   } catch (error) {
     return error.response.data.message;
@@ -196,7 +195,6 @@ export const getSearchHistory = async (token) => {
         },
       }
     );
-    console.log(data);
     return data;
   } catch (error) {
     return error.response.data.message;
@@ -216,7 +214,6 @@ export const deletesearchHistory = async (searchUser, token) => {
         },
       }
     );
-    console.log(data);
     return data;
   } catch (error) {
     return error.response.data.message;
@@ -233,7 +230,6 @@ export const getAllFriendRequests = async (token) => {
         },
       }
     );
-    console.log(data);
     return {status: "ok", data};
   } catch (error) {
     return error.response.data.message;

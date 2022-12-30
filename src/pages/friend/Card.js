@@ -11,21 +11,18 @@ const Card = ({ userr, type, getData }) => {
   const { user } = useSelector((state) => ({ ...state }));
   const cancelRequestHandler = async (id) => {
     const res = await cancelRequest(id, user.token);
-    console.log(res);
     if (res === "ok") {
       getData();
     }
   };
   const deleteRequestHandler = async (id) => {
     const res = await deleteRequest(id, user.token);
-    console.log(res);
     if (res === "ok") {
       getData();
     }
   };
   const confirmRequestHandler = async (id) => {
     const res = await acceptRequest(id, user.token);
-    console.log(res);
     if (res === "ok") {
       getData();
     }
