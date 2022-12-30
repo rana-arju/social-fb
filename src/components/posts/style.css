@@ -12,6 +12,9 @@
   color: var(--color-primary);
   margin-bottom: 15px;
 }
+.post_bg_text{
+  color: #000;
+}
 /* .post img {
   width: 100%;
   cursor: pointer;

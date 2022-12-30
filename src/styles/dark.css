@@ -1,0 +1,66 @@
+.dark {
+  --bg-primary: #242526;
+  --bg-secondary: #18191a;
+  --bg-third: #3a3b3c;
+  --bg-forth: #3a3b3c;
+  --bg-fifth: #888888;
+  --color-primary: #e4e6eb;
+  --color-secondary: #b0b3b8;
+}
+.dark .blur {
+  background: rgba(1, 1, 1, 0.53);
+}
+.dark hover1:hover,
+.dark hover2:hover {
+  background: var(--bg-third);
+}
+
+/* Header Dark */
+
+.dark .header_right svg {
+  fill: #fff;
+}
+.dark .all_menu_search input[type="text"] {
+  color: var(--color-primary);
+}
+.dark .active_header {
+  background: var(--light-blue-color);
+}
+.dark .active_header svg {
+  fill: var(--blue-color);
+}
+.dark .header_right .circle_icon:hover,
+.dark .left_home .small_circle,
+.dark .comment_circle_icon:hover {
+  background: var(--bg-fifth);
+}
+
+/* img,svg and i color change */
+
+.dark .small_circle i,
+.dark .small_circle svg,
+.dark .circle i,
+.dark .white_circle svg,
+.dark .profile_privacy i,
+.dark .profile_privacy img,
+.dark .all_right_circle i,
+.dark .absolute_wrap_header i,
+.dark .post_menu i,
+.dark .post_menu img,
+.dark .comment_circle_icon i, .dark .search  svg {
+  filter: invert(100%);
+}
+
+/* posts */
+.dark .open_post:hover {
+  background: #333;
+}
+.dark .post_action i {
+  filter: invert(95%) !important;
+}
+.dark .emoji_icon_large:hover {
+  filter: invert(0);
+}
+.dark .add_pics_wrap i{
+filter: invert(100%);
+}

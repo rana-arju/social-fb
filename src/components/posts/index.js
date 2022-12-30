@@ -184,7 +184,7 @@ const Posts = ({ post, user, profile }) => {
         </div>
         <div className="to_right">
           <div className="comment_counts">{comments?.length} comments</div>
-          <div className="share_count">2 share</div>
+          <div className="share_count">0 share</div>
         </div>
       </div>
       <div className="post_actions ">

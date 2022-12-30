@@ -25,6 +25,9 @@
   padding: 14px 15px 17px 15px;
   border-bottom: 1px solid var(--bg-third);
 }
+.box_header span, .box_profile_name{
+  color: var(--color-primary);
+}
 .postBox .small_circle {
   position: absolute;
   right: 16px;
@@ -51,6 +54,7 @@
   border-radius: 7px;
   background: var(--bg-third);
   cursor: pointer;
+  color: var(--color-primary);
 }
 /* .profile_privacy img{
     width: 16px;
@@ -136,6 +140,7 @@
   font-weight: 600;
   font-size: 14px;
   width: 50%;
+  color: var(--color-primary);
 }
 .post_header_right {
   width: 35px;
@@ -229,6 +234,7 @@
 .add_col span:first-of-type {
   font-size: 15px;
   font-weight: 600;
+  color: var(--color-primary);
 }
 .add_col span:last-of-type {
   font-size: 12px;
@@ -249,6 +255,7 @@
 .mobile_text {
   font-size: 12px;
   font-weight: 600;
+  color: var(--color-primary);
 }
 .addphone_btn {
   font-size: 14px;
@@ -259,6 +266,7 @@
   position: absolute;
   right: 10px;
   cursor: pointer;
+  color: var(--color-primary);
 }
 .p0 {
   padding: 0;

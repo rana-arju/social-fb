@@ -9,7 +9,7 @@ const LeftMenu = ({ user }) => {
   const [visiable, setVisiable] = useState(false);
   return (
     <div className="left_home scrollbar">
-      <Link to="/profile" className="left_link hover1">
+      <Link to="/profile" className="left_link hover2">
         <img src={user?.picture} alt="" />
         <span>
           {user?.first_name} {user?.last_name}
@@ -24,7 +24,7 @@ const LeftMenu = ({ user }) => {
         />
       ))}
       {!visiable && (
-        <div className="left_link hover1" onClick={() => setVisiable(true)}>
+        <div className="left_link hover2" onClick={() => setVisiable(true)}>
           <div className="small_circle">
             <ArrowDown1 />
           </div>
@@ -42,7 +42,7 @@ const LeftMenu = ({ user }) => {
               notification={link.notification}
             />
           ))}
-          <div className="left_link hover1" onClick={() => setVisiable(false)}>
+          <div className="left_link hover2" onClick={() => setVisiable(false)}>
             <div className="small_circle rotate360">
               <ArrowDown1 />
             </div>

@@ -118,4 +118,6 @@
   width: 97%;
   margin-top: 2rem;
 }
-
+.left_home .small_circle{
+  background: rgba(214, 214, 214);
+}

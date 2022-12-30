@@ -53,7 +53,7 @@ function App() {
     getAllPosts();
   }, [user]);
   return (
-    <div>
+    <div className="dark">
       {user && visible && (
         <CreatePostPopup
           user={user}
@@ -80,19 +80,9 @@ function App() {
             element={
               <Profile setVisible={setVisible} getAllPosts={getAllPosts} />
             }
-          /> 
-          <Route
-            path="/friends"
-            element={
-              <Friend   />
-            }
-          /> 
-          <Route
-            path="/friends/:type"
-            element={
-              <Friend  />
-            }
           />
+          <Route path="/friends" element={<Friend />} />
+          <Route path="/friends/:type" element={<Friend />} />
           <Route
             path="/profile/:username"
             element={

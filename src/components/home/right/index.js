@@ -14,13 +14,13 @@ const RightMenu = ({user}) => {
                 contacts
             </div>
             <div className="contacts_header_right">
-                <div className="contact_circle hover1">
+                <div className="contact_circle hover2">
                     <NewRoom color={color} />
                 </div> 
-                <div className="contact_circle hover1">
+                <div className="contact_circle hover2">
                     <Search color={color} />
                 </div> 
-                <div className="contact_circle hover1">
+                <div className="contact_circle hover2">
                     <Dots color={color} />
                 </div>
             </div>
