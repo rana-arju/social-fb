@@ -108,8 +108,7 @@ const SearchMenu = ({ color, setShowSearcMenu, token }) => {
                 >
                   <img src={history.user.picture} alt="" className="" />
                   <span>
-                    {history.user.first_name}
-                    {history.user.last_name}
+                    {history.user.first_name} {history.user.last_name}
                   </span>
                 </Link>
                 <i className="exit_icon" onClick={() => removeSearchHistory(history.user._id)}></i>

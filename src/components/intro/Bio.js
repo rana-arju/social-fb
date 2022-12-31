@@ -25,7 +25,7 @@ const Bio = ({
         <textarea
           className="textarea_blue details_input"
           name={name}
-          value={infos.name}
+          value={infos?.name}
           maxLength={detail ? 25 : 100}
           placeholder={placeholder}
           onChange={handleChange}
