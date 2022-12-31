@@ -51,12 +51,11 @@ const Posts = ({ post, user, profile }) => {
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
-        console.log(reacts);
       }
       if (index1 !== -1) {
         setReact([...reacts, (reacts[index1].count = --reacts[index1].count)]);
         setTotal((prev) => --prev);
-        console.log(reacts);
+       
       }
     }
   };
@@ -66,8 +65,7 @@ const Posts = ({ post, user, profile }) => {
   const postRef = useRef(null);
   const reactRef = useRef(null);
   useClickOutside(reactRef, () => setVisible(false));
-  console.log("reacts index", reacts);
-  console.log("reacts check", check);
+
   return (
     <div
       className="post"
