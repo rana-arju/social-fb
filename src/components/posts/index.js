@@ -11,8 +11,8 @@ import { getReacts, reactPost } from "../../functions/Post";
 import Comment from "./Comment";
 const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
-  const [reacts, setReact] = useState();
-  const [check, setCheck] = useState();
+  const [reacts, setReact] = useState([]);
+  const [check, setCheck] = useState([]);
   const [total, setTotal] = useState(0);
   const [checkSaved, setCheckSaved] = useState();
   const [comments, setComment] = useState();
@@ -28,29 +28,30 @@ const Posts = ({ post, user, profile }) => {
   }, [post]);
   const getPostReacts = async () => {
     const res = await getReacts(post._id, user.token);
-    console.log("all react", res?.reacts);
-    setReact(res?.reacts);
-    setCheck(res?.check);
-    setTotal(res?.total);
-    setCheckSaved(res.checkSaved);
+    if (res) {
+      setReact(res?.reacts);
+      setCheck(res?.check);
+      setTotal(res?.total);
+      setCheckSaved(res.checkSaved);
+    }
   };
   const reactHandler = async (type) => {
     await reactPost(post._id, type, user.token);
     if (check == type) {
       setCheck();
-      let index = await reacts.findIndex((x) => x.react == check);
-      console.log("index", index);
+      let index = reacts.findIndex((x) => x.react == check);
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = --reacts[index].count)]);
         setTotal((prev) => --prev);
       }
     } else {
       setCheck(type);
-      let index = await reacts.findIndex((x) => x.react == type);
-      let index1 = await reacts.findIndex((x) => x.react == check);
+      let index = reacts.findIndex((x) => x.react == type);
+      let index1 = reacts.findIndex((x) => x.react == check);
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
+        console.log(reacts);
       }
       if (index1 !== -1) {
         setReact([...reacts, (reacts[index1].count = --reacts[index1].count)]);
@@ -58,7 +59,6 @@ const Posts = ({ post, user, profile }) => {
         console.log(reacts);
       }
     }
-    // setVisible(false);
   };
   const seeMore = () => {
     setCount((prev) => prev + 3);

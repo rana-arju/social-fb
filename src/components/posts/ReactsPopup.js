@@ -51,7 +51,7 @@ const ReactsPopup = ({ visible, setVisible, reactHandler, reactRef }) => {
             <div
               className="react"
               key={i}
-              onClick={() => reactHandler(react.name)}
+              onClick={() => reactHandler(react?.name)}
             >
               <img src={react?.image} alt="" />
             </div>
