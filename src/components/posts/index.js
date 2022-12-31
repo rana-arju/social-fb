@@ -11,7 +11,6 @@ import { getReacts, reactPost } from "../../functions/Post";
 import Comment from "./Comment";
 const Posts = ({ post, user, profile }) => {
   const [visible, setVisible] = useState(false);
-  const [reactMenu, setReactMenu] = useState(false);
   const [reacts, setReact] = useState();
   const [check, setCheck] = useState();
   const [total, setTotal] = useState(0);
@@ -29,45 +28,46 @@ const Posts = ({ post, user, profile }) => {
   }, [post]);
   const getPostReacts = async () => {
     const res = await getReacts(post._id, user.token);
-    setReact(res.reacts);
-    setCheck(res.check);
-    setTotal(res.total);
+    console.log("all react", res?.reacts);
+    setReact(res?.reacts);
+    setCheck(res?.check);
+    setTotal(res?.total);
     setCheckSaved(res.checkSaved);
   };
   const reactHandler = async (type) => {
-    reactPost(post._id, type, user.token);
+    await reactPost(post._id, type, user.token);
     if (check == type) {
       setCheck();
-      let index = reacts.findIndex((x) => x.react == check);
+      let index = await reacts.findIndex((x) => x.react == check);
+      console.log("index", index);
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = --reacts[index].count)]);
         setTotal((prev) => --prev);
-        setVisible(false);
       }
     } else {
       setCheck(type);
-      let index = reacts.findIndex((x) => x.react == type);
-      let index1 = reacts.findIndex((x) => x.react == check);
+      let index = await reacts.findIndex((x) => x.react == type);
+      let index1 = await reacts.findIndex((x) => x.react == check);
       if (index !== -1) {
         setReact([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
-        setVisible(false);
       }
       if (index1 !== -1) {
         setReact([...reacts, (reacts[index1].count = --reacts[index1].count)]);
         setTotal((prev) => --prev);
-        setVisible(false);
+        console.log(reacts);
       }
     }
     // setVisible(false);
   };
-  const seeMore = async () => {
+  const seeMore = () => {
     setCount((prev) => prev + 3);
   };
   const postRef = useRef(null);
-  const reactRef = useRef(null)
+  const reactRef = useRef(null);
   useClickOutside(reactRef, () => setVisible(false));
-
+  console.log("reacts index", reacts);
+  console.log("reacts check", check);
   return (
     <div
       className="post"

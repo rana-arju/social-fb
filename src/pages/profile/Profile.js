@@ -106,7 +106,6 @@ const Profile = ({ getAllPosts }) => {
   const getScroll = () => {
     setScrollHeight(window.pageYOffset);
   };
-  console.log(profile);
   return (
     <div className="profile">
       {user && visible && (

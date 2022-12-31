@@ -48,10 +48,10 @@ export const reactPost = async (postId, react, token) => {
   }
 };
 
-export const getReacts = async (postId, token) => {
+export const getReacts = async (id, token) => {
   try {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/getReacts/${postId}`,
+      `${process.env.REACT_APP_BACKEND_URL}/getReacts/${id}`,
 
       {
         headers: {

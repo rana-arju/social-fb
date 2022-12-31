@@ -71,7 +71,6 @@ const UpdateProfilePicture = ({ setImage, image, setError, setShow, pRef }) => {
           user.id,
           user.token
         );
-        console.log("new pic", new_post);
         if (new_post.status === "ok") {
           setLoading(false);
           setImage("");

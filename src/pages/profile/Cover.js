@@ -81,7 +81,6 @@ const Cover = ({ cover, visitor, photos }) => {
       formData.append("file", blob);
       formData.append("path", path);
       const res = await UploadImages(formData, path, user.token);
-      console.log("res", res);
       const update_picture = await updateProfileCover(
         res[0].url,
         user.token
@@ -95,7 +94,6 @@ const Cover = ({ cover, visitor, photos }) => {
           user.id,
           user.token
         );
-        console.log("new post", new_post);
         if (new_post.status === "ok") {
           setLoading(false);
           setCoverPicture("");
