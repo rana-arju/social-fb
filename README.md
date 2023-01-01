@@ -21,10 +21,6 @@ Full-Stack facebook Clone using MERN Stack(MongoDb, express js, React js, Nodejs
 
 
 
-**Deployed On:**
-
-![heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
-
 **Cloud Storage:** [Cloudinary](https://cloudinary.com/)
 
 ## 🚀 Features
@@ -51,10 +47,49 @@ Full-Stack facebook Clone using MERN Stack(MongoDb, express js, React js, Nodejs
 - See Followers/Following, friend of Users
 - Emoji Enabled (Emoji Mart)
 
+## FRONT-END TECHNOLOGY :
+- HTML
+- Javascript
+- ReactJS
+- CSS
+- React redux
+##  BACK-END TECHNOLOGY :
+- Node JS
+- Express JS
+## DATABASE REQUIREMENTS :
+- MongoDB
+- Mongoose
+## IMAGE/PHOTO HOST:
+- Cloudinary
+## FRONTEND AND BACKEND LIVE HOST:
+- vercel
+## OTHERS PACKAGES:
+- React router dom
+- Cookies-js
+- React emoji picker
+- Formik
+- React easy crop
+- React loading skeleton
+- React responsive
+- React spinners
+- Json web token
+- Google api
+- Bcrypt
+- Express fileupload etc.
+## MINIMUM SOFTWARE :
+- Visual Studio Code
+- Node module
+- Git,github
+- Cmd
 ## Home Page 🙈 :
 ![Home](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145494/github%20image/home_page_q7r3wj.png)
+## Dark Home Page 🙈 :
+![Home](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672602100/github%20image/rsz_2screenshot_2023-01-01_at_11-34-22_daily_connect_-_all_time_connected_your_friends_1_zp7dzp.png)
+
 ## Profile Page 🙈 :
 ![Profile Page](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672145495/github%20image/profile_page_cssujl.png)
+## Dark Profile Page 🙈 :
+![Profile Page](https://res.cloudinary.com/db8l1ulfq/image/upload/v1672602079/github%20image/rsz_1screenshot_2023-01-01_at_11-35-25_daily_connect_-_all_time_connected_your_friends_1_myllhu.png)
 ## Other Pages 🙈 :
 <table>
   <tr>
