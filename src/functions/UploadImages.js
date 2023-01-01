@@ -1,8 +1,9 @@
 import axios from "axios";
+const instance = axios.create();
 
 export const UploadImages = async (formData, path, token) => {
   try {
-    const { data } = await axios.post(
+    const { data } = await instance.post(
       `${process.env.REACT_APP_BACKEND_URL}/uploadImages`,
       formData,
       { path },

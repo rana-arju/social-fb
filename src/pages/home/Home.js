@@ -5,7 +5,7 @@ import CreatePost from "../../components/createPost";
 import Header from "../../components/header/Header";
 import LeftMenu from "../../components/home/leftMenu";
 import RightMenu from "../../components/home/right";
-import EmailVerificatin from "../../components/home/sendVerification";
+// import EmailVerificatin from "../../components/home/sendVerification";
 import Stories from "../../components/home/stories";
 import Posts from "../../components/posts";
 import "./style.css";
